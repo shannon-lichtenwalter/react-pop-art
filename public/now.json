@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "alias": "pop-art",
+  "name": "pop-art",
+  "routes": [
+      {
+        "src": "^/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "handle":"filesystem"
+      },
+      {
+        "src": ".*",
+        "dest": "/index.html"
+      }
+  ]
+}
