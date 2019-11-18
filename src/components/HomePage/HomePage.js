@@ -2,11 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class HomePage extends React.Component{
+  componentDidMount() {
+    window.scrollTo(0, 0);
+}
   render(){
     return(
       <div className='homePage'>
       <section>
-        <Link to='/create-event'>Create New Event</Link>
+        <Link to='/create-event'><button>Create New Event</button></Link>
         <form className="filterEvents" action="#" method="post">
             <fieldset name="filterOptions">
               <legend>Filter Event Results</legend>
