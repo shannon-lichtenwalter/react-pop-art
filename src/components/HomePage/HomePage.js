@@ -7,7 +7,6 @@ import PopArtContext from '../../context/PopArtContext';
 
 class HomePage extends React.Component{
   state = {
-    events: [],
     filteringResults: false
   }
 
@@ -18,9 +17,7 @@ class HomePage extends React.Component{
 
     EventsApiService.getEvents()
       .then(res => {
-        this.setState({
-          events: res
-        })
+        this.context.setEvents(res)
       })
       .catch((e) => this.context.setError(e));
 }
@@ -38,7 +35,7 @@ class HomePage extends React.Component{
         {this.state.filteringResults && <FilterOptions />}
     </section>
 
-    {this.state.events.map(event => {
+    {this.context.events.map(event => {
       return <Event key={event.id} event={event}/>
     })}
     </div>

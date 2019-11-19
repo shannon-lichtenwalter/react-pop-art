@@ -13,10 +13,23 @@ import PopArtContext from '../../context/PopArtContext';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import PrivateRoute from '../Utils/PrivateRoute';
+import TokenService from '../../services/token-service';
 
 class App extends React.Component {
   state = {
+    events: [],
     error: null,
+    loggedIn: TokenService.hasAuthToken()
+      ? true
+      :false
+  }
+
+  setLoggedIn = () => {
+    this.setState({
+      loggedIn: TokenService.hasAuthToken()
+      ? true
+      :false
+    })
   }
 
   setError = (err) => {
@@ -25,14 +38,31 @@ class App extends React.Component {
     })
   }
 
+  setEvents = events => {
+    this.setState({
+      events
+    })
+  }
+
+  addEvent = event => {
+    this.setState([
+      ...this.state.events,
+      event
+    ])
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
 }
   render() {
     return (
       <PopArtContext.Provider value={{
+        events: this.state.events,
         error: this.state.error,
         setError: this.setError,
+        setEvents: this.setEvents,
+        addEvent: this.addEvent,
+        setLoggedIn: this.setLoggedIn
       }} >
         <div className='App'>
           <nav>

@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
 import TokenService from '../../services/token-service';
-
+import PopArtContext from '../../context/PopArtContext';
 
 class Nav extends React.Component {
 
+  static contextType = PopArtContext;
+
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
+    this.context.setLoggedIn();
   }
 
   renderLogoutLink = () => {
@@ -22,12 +25,6 @@ class Nav extends React.Component {
         <li><Link to='/login'>Login</Link></li>
         <li><Link to='/register'>Sign Up</Link></li>
       </>
-    )
-  }
-
-  componentDidMount = () => {
-    this.setState(
-      { loggedIn: TokenService.hasAuthToken() ? true : false }
     )
   }
 
