@@ -11,6 +11,8 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import './App.css';
 import PopArtContext from '../../context/PopArtContext';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
+import PrivateRoute from '../Utils/PrivateRoute';
 
 class App extends React.Component {
   state = {
@@ -45,9 +47,9 @@ class App extends React.Component {
             <Switch>
               <Route exact path ='/' component= {LandingPage}/>
               <Route path='/home' component={HomePage} />
-              <Route path= '/login' component={LoginPage}/>
-              <Route path='/register' component={RegisterPage}/>
-              <Route path='/create-event' component={CreateEventPage}/>
+              <PublicOnlyRoute path= '/login' component={LoginPage}/>
+              <PublicOnlyRoute path='/register' component={RegisterPage}/>
+              <PrivateRoute path='/create-event' component={CreateEventPage}/>
               <Route component={NotFoundPage}/>
             </Switch>
             </ErrorBoundary>

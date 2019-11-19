@@ -1,8 +1,8 @@
-import config from '../config'
+import config from '../config';
 //import TokenService from './token-service';
 
 const EventsApiService = {
-  
+
 getEvents(){
   return fetch(`${config.API_ENDPOINT}/events`, {
     method: 'GET',

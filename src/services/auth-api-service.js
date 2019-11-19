@@ -5,6 +5,7 @@ const AuthApiService = {
     return fetch(`${config.API_ENDPOINT}/auth/login`,{
       method:'POST',
       headers: {
+        'authorization': `bearer ${config.API_KEY}`,
         'content-type': 'application/json',
       },
       body: JSON.stringify(credentials),
