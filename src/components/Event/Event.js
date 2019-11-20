@@ -2,6 +2,7 @@ import React from 'react';
 import './Event.css';
 import * as moment from 'moment';
 import PopArtContext from '../../context/PopArtContext';
+import RequestorsApi from '../../services/requestors-api-service';
 
 class Event extends React.Component{
   state = {
@@ -10,11 +11,22 @@ class Event extends React.Component{
 
   static contextType = PopArtContext;
 
+handleRequestEvent= () => {
+  console.log('here!');
+  const event_id = this.props.event.id;
+  RequestorsApi.addNewRequest(event_id)
+  .then(() => {
+    return null; //possibly need to have something in state that reflects who has requested events.
+  })
+  .catch(this.context.setError)
+}
+
+
   renderEventDetails = () => {
     return (
     <>
       <h4>{this.props.event.slots_available} Artist Slots Available</h4>
-      <button>Request To Book this Event</button>
+      <button onClick={()=> this.handleRequestEvent()}>Request To Book this Event</button>
       <h4>Event Details</h4>
       <p>Hosted by: {this.props.event.username}</p>
       <p>Type of event: {this.props.event.event_type}</p>
