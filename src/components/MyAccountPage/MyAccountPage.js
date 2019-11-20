@@ -2,23 +2,15 @@ import React from 'react';
 import PopArtContext from '../../context/PopArtContext';
 import UsersApiService from '../../services/users-api-service';
 import RequestorsApiService from '../../services/requestors-api-service';
-import * as moment from 'moment';
 import EventsApiService from '../../services/events-api-service';
+import RequestedEvents from '../RequestedEvents/RequestedEvents';
+import HostedEvents from '../HostedEvents/HostedEvents';
 
 class MyAccountPage extends React.Component{
   state = {
     user: null,
-    requests: [ {eventname: 'event', eventdate: '12/12/19', status: 'pending'}],
-    events: [
-      {
-      name:'show',
-      date: '11/30/19',
-      time: '08:00:00', 
-      requestors:[
-        {username:'Jane', booking_status:'pending', user_id: 1},
-      ]
-      }
-    ]
+    requests: [],
+    events: []
   };
 
   static contextType = PopArtContext;
@@ -30,7 +22,6 @@ class MyAccountPage extends React.Component{
   }
 
   componentDidMount(){
-    if (this.context.loggedIn) {
       UsersApiService.getLoggedInUser()
         .then(res => {
           this.setUser(res);
@@ -54,7 +45,7 @@ class MyAccountPage extends React.Component{
           })
           .catch((e) => this.context.setError(e))
     }
-  }
+
 
 
   render(){ 
@@ -63,18 +54,14 @@ class MyAccountPage extends React.Component{
       <h2> Welcome back{this.state.user ? ', ' + this.state.user.username : ''} </h2>
       <section>
         <h2>Your Booking Requests</h2>
-        <ul>
-          <li>{this.state.requests[0].name} on {moment(this.state.requests[0].date).format('LL')} at {moment(this.state.requests[0].date, 'HH:mm').format('LT')} :: {this.state.requests[0].booking_status} </li>
-          <li>Twist and Shout Records on November 20th :: Denied </li>
-          <li>Jives Coffee Shop on November 20th :: Approved</li>
-          <li>Wine Bar on November 29th :: Approved</li>
-        </ul>
+          {this.state.requests ? <RequestedEvents requests={this.state.requests}/> : ''}
       </section>
   
       <section>
-        <h2>Your Events</h2>
+        <h2>Your Hosted Events</h2>
         <button>Create New Event</button>
-        <ul>
+        {this.state.events ? <HostedEvents events={this.state.events}/> : ''}
+        {/* <ul>
           <li>{this.state.events[0].name} on {this.state.events[0].date}
             <button>Cancel Event</button>
           </li>
@@ -95,17 +82,17 @@ class MyAccountPage extends React.Component{
   
   
         </ul>
-  
+   */}
       </section>
   
-      <section>
+      {/* <section>
         <h2>Options</h2>
         <ul>
           <li>Update Profile</li>
           <li>Change Password</li>
           <li>Delete Account</li>
         </ul>
-      </section>
+      </section> */}
       </>
     )
   }
