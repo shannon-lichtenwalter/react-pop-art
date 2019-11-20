@@ -25,7 +25,10 @@ handleRequestEvent= () => {
     return (
     <>
       <h4>{this.props.event.slots_available} Artist Slots Available</h4>
-      <button onClick={()=> this.handleRequestEvent()}>Request To Book this Event</button>
+      <button 
+        disabled={this.context.currentUser.user_id === this.props.event.host_id ? true : false}
+        onClick={()=> this.handleRequestEvent()}
+        >Request To Book this Event</button>
       <h4>Event Details</h4>
       <p>Hosted by: {this.props.event.username}</p>
       <p>Type of event: {this.props.event.event_type}</p>

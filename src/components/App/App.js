@@ -21,17 +21,17 @@ class App extends React.Component {
   state = {
     events: [],
     error: null,
-    currentUser:null,
+    currentUser: null,
     loggedIn: TokenService.hasAuthToken()
       ? true
-      :false
+      : false
   }
 
   setLoggedIn = () => {
     this.setState({
       loggedIn: TokenService.hasAuthToken()
-      ? true
-      :false
+        ? true
+        : false
     })
   }
 
@@ -69,12 +69,14 @@ class App extends React.Component {
       })
       .catch((e) => this.setError(e));
 
+    if (this.state.loggedIn) {
       UsersApiService.getLoggedInUser()
-      .then(res => {
-        this.setLoggedInUser(res);
-      })
-      .catch((e) => this.setError(e));
-}
+        .then(res => {
+          this.setLoggedInUser(res);
+        })
+        .catch((e) => this.setError(e));
+    }
+  }
   render() {
     return (
       <PopArtContext.Provider value={{
@@ -85,7 +87,8 @@ class App extends React.Component {
         addEvent: this.addEvent,
         setLoggedIn: this.setLoggedIn,
         loggedIn: this.state.loggedIn,
-        setLoggedInUser: this.setLoggedInUser
+        setLoggedInUser: this.setLoggedInUser,
+        currentUser: this.state.currentUser
       }} >
         <div className='App'>
           <nav>
@@ -93,18 +96,18 @@ class App extends React.Component {
           </nav>
           <main className='App'>
             <header>
-            <h1>Pop Art</h1>
+              <h1>Pop Art</h1>
             </header>
             {this.state.error && <p className='red'>There was an error! Oh no!</p>}
             <ErrorBoundary>
-            <Switch>
-              <Route exact path ='/' component= {LandingPage}/>
-              <Route path='/home' component={HomePage} />
-              <PublicOnlyRoute path= '/login' component={LoginPage}/>
-              <PublicOnlyRoute path='/register' component={RegisterPage}/>
-              <PrivateRoute path='/create-event' component={CreateEventPage}/>
-              <Route component={NotFoundPage}/>
-            </Switch>
+              <Switch>
+                <Route exact path='/' component={LandingPage} />
+                <Route path='/home' component={HomePage} />
+                <PublicOnlyRoute path='/login' component={LoginPage} />
+                <PublicOnlyRoute path='/register' component={RegisterPage} />
+                <PrivateRoute path='/create-event' component={CreateEventPage} />
+                <Route component={NotFoundPage} />
+              </Switch>
             </ErrorBoundary>
           </main>
           <footer>
