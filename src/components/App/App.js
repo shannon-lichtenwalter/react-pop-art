@@ -15,11 +15,13 @@ import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import PrivateRoute from '../Utils/PrivateRoute';
 import TokenService from '../../services/token-service';
 import EventsApiService from '../../services/events-api-service';
+import UsersApiService from '../../services/users-api-service';
 
 class App extends React.Component {
   state = {
     events: [],
     error: null,
+    currentUser:null,
     loggedIn: TokenService.hasAuthToken()
       ? true
       :false
@@ -52,11 +54,24 @@ class App extends React.Component {
     ])
   }
 
+  setLoggedInUser = user => {
+    this.setState({
+      currentUser: user
+    })
+  }
+
+
   componentDidMount() {
     //window.scrollTo(0, 0);
     EventsApiService.archiveEvents()
       .then((res) => {
         return null
+      })
+      .catch((e) => this.setError(e));
+
+      UsersApiService.getLoggedInUser()
+      .then(res => {
+        this.setLoggedInUser(res);
       })
       .catch((e) => this.setError(e));
 }
@@ -69,7 +84,8 @@ class App extends React.Component {
         setEvents: this.setEvents,
         addEvent: this.addEvent,
         setLoggedIn: this.setLoggedIn,
-        loggedIn: this.state.loggedIn
+        loggedIn: this.state.loggedIn,
+        setLoggedInUser: this.setLoggedInUser
       }} >
         <div className='App'>
           <nav>

@@ -12,7 +12,6 @@ class Event extends React.Component{
   static contextType = PopArtContext;
 
 handleRequestEvent= () => {
-  console.log('here!');
   const event_id = this.props.event.id;
   RequestorsApi.addNewRequest(event_id)
   .then(() => {

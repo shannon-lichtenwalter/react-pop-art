@@ -6,9 +6,6 @@ const EventsApiService = {
 getEvents(){
   return fetch(`${config.API_ENDPOINT}/events`, {
     method: 'GET',
-    headers: {
-      'authorization': `bearer ${config.API_KEY}`
-    },
   })
     .then(res => 
       (!res.ok)

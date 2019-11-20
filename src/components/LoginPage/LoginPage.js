@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
 import PopArtContext from '../../context/PopArtContext';
+import UsersApiService from '../../services/users-api-service';
 
 class LoginPage extends React.Component {
   state = {
@@ -13,7 +14,12 @@ class LoginPage extends React.Component {
 
   handleLoginSuccess = () => {
     this.context.setLoggedIn();
-    this.props.history.push('/home')
+    UsersApiService.getLoggedInUser()
+      .then(res => {
+        this.context.setLoggedInUser(res)
+      })
+      .catch((e) => this.setError(e));
+    this.props.history.push('/home');
   }
 
   handleSubmitJwtAuth = event => {
