@@ -29,6 +29,10 @@ class CreateEventPage extends React.Component {
     }
 
     EventsApiService.postEvent(newEvent)
+      .then(res => {
+          this.context.addEvent(res);
+          this.props.history.push('/home')
+        })
       .then(()=> {
       name.value= ''
       date.value = ''
@@ -92,7 +96,7 @@ class CreateEventPage extends React.Component {
               </div>
               <div>
                 <label htmlFor="date">Date:</label>
-                <input placeholder="MM/DD/YYYY" type="number" name="date" id="date" required />
+                <input placeholder="MM/DD/YYYY" type="date" name="date" id="date" required />
               </div>
               <div>
                 <label htmlFor="time">Time:</label>
@@ -120,8 +124,8 @@ class CreateEventPage extends React.Component {
               <div>
                 <label htmlFor="paidEvent">Are you offerring to pay the artist(s) for this event?</label>
                 <select name="paid" id="paidEvent" required>
-                  <option>No</option>
-                  <option>Yes</option>
+                  <option value='false'>No</option>
+                  <option value='true'>Yes</option>
                 </select>
               </div>
               <div>

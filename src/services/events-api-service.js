@@ -18,20 +18,21 @@ getEvents(){
 },
 
 postEvent(newEvent){
-  return fetch(`${config.API_ENDPOINT}/events`, {
+  return fetch(`${config.API_ENDPOINT}/events/create`, {
     method: 'POST',
     headers: {
+      'content-type': 'application/json',
       'authorization' : `bearer ${TokenService.getAuthToken()}`
     },
-    body: JSON.stringify({
+    body: JSON.stringify(
       newEvent
-    })
+    )
   })
-  .then(res => 
-    (!res.ok)
-    ? res.json().then(e => Promise.reject(e))
-    : res.json()
-  )
+  // .then(res => 
+  //   (!res.ok)
+  //   ? res.json().then(e => Promise.reject(e))
+  //   : res.json()
+  // )
 }
 }
 
