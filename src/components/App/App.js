@@ -14,6 +14,7 @@ import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import PrivateRoute from '../Utils/PrivateRoute';
 import TokenService from '../../services/token-service';
+import EventsApiService from '../../services/events-api-service';
 
 class App extends React.Component {
   state = {
@@ -52,7 +53,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
+    EventsApiService.archiveEvents()
+      .then((res) => {
+        return null
+      })
+      .catch((e) => this.setError(e));
 }
   render() {
     return (
@@ -62,7 +68,8 @@ class App extends React.Component {
         setError: this.setError,
         setEvents: this.setEvents,
         addEvent: this.addEvent,
-        setLoggedIn: this.setLoggedIn
+        setLoggedIn: this.setLoggedIn,
+        loggedIn: this.state.loggedIn
       }} >
         <div className='App'>
           <nav>

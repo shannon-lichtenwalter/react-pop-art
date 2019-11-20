@@ -50,9 +50,19 @@ class CreateEventPage extends React.Component {
       .catch(this.context.setError)
     
   }
-  componentDidMount() {
-    window.scrollTo(0, 0);
+
+  renderTodaysDate(){
+    const todaysDate = new Date();
+    const year = todaysDate.getFullYear(); //YYYY
+    const month = ("0" + (todaysDate.getMonth() +1)).slice(-2); //MM
+    const day = ("0" + todaysDate.getDate()).slice(-2); //DD
+    const minDay = (year +"-"+ month +"-"+day); //"YYYY-MM-DD"
+
+    return minDay;
   }
+  // componentDidMount() {
+  //   window.scrollTo(0, 0);
+  // }
   render() {
     const { error } = this.state;
     return (
@@ -96,14 +106,14 @@ class CreateEventPage extends React.Component {
               </div>
               <div>
                 <label htmlFor="date">Date:</label>
-                <input placeholder="MM/DD/YYYY" type="date" name="date" id="date" required />
+                <input placeholder="MM/DD/YYYY" type="date" min={this.renderTodaysDate()} name="date" id="date" required />
               </div>
               <div>
                 <label htmlFor="time">Time:</label>
                 <input placeholder="example: 6:00pm" type="time" name="time" id="time" required />
               </div>
               <label htmlFor="eventType">Type of Event</label>
-              <select name="event_type" id="eventType" required>
+              <select name="event_type" id="eventType">
                 <option>Music Performance</option>
                 <option>Art Show</option>
                 <option>Dance Performance</option>
@@ -115,15 +125,15 @@ class CreateEventPage extends React.Component {
               </select>
               <div>
                 <label htmlFor="description">Description</label>
-                <textarea name="description" id="description" required></textarea>
+                <textarea name="description" id="description"></textarea>
               </div>
               <div>
                 <label htmlFor="slotsAvailable">Artist Slots Available</label>
-                <input type="number" name="slots_available" id="slotsAvailable" required />
+                <input type="number" min="0" name="slots_available" id="slotsAvailable" required />
               </div>
               <div>
                 <label htmlFor="paidEvent">Are you offerring to pay the artist(s) for this event?</label>
-                <select name="paid" id="paidEvent" required>
+                <select name="paid" id="paidEvent">
                   <option value='false'>No</option>
                   <option value='true'>Yes</option>
                 </select>
@@ -131,7 +141,7 @@ class CreateEventPage extends React.Component {
               <div>
                 <label htmlFor="details">Additional Details</label>
                 <textarea placeholder="arrival time, equipment available, contact info" name="additional_details" id="details"
-                  required></textarea>
+                  ></textarea>
               </div>
               <div>
                 <label htmlFor="eventPhoto">Upload photo for event?</label>

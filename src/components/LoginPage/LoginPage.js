@@ -21,8 +21,6 @@ class LoginPage extends React.Component {
     this.setState({ error: null })
     const { username, password } = event.target;
 
-    console.log(username.value, password.value);
-
     AuthApiService.postLogin({
       username: username.value,
       password: password.value
@@ -38,9 +36,9 @@ class LoginPage extends React.Component {
       })
   }
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
+ 
+  //   window.scrollTo(0, 0);
+  // }
   render() {
     const { error } = this.state;
     return (

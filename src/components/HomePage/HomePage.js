@@ -13,7 +13,7 @@ class HomePage extends React.Component{
   static contextType = PopArtContext;
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
     EventsApiService.getEvents()
       .then(res => {

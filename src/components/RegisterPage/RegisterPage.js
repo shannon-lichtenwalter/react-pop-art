@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 
 class RegisterPage extends React.Component{
-  componentDidMount() {
-    window.scrollTo(0, 0);
-}
+//   componentDidMount() {
+//     window.scrollTo(0, 0);
+// }
   render(){
     return(
       <section>
