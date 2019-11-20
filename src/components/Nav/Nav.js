@@ -14,13 +14,16 @@ class Nav extends React.Component {
     this.context.setLoggedInUser(null);
   }
 
-  renderLogoutLink = () => {
+  renderLogoutLinks = () => {
     return (
+      <>
+      <li><Link to='/my-account'>My Account</Link></li>
       <li><Link onClick={this.handleLogoutClick} to='/home'>Logout</Link></li>
+      </>
     )
   }
 
-  renderLoginLink = () => {
+  renderLoginLinks = () => {
     return (
       <>
         <li><Link to='/login'>Login</Link></li>
@@ -35,8 +38,8 @@ class Nav extends React.Component {
       <ul className='navigationLinks'>
         <li><Link to='/home'>Home</Link></li>
         {TokenService.hasAuthToken()
-          ? this.renderLogoutLink()
-          : this.renderLoginLink()}
+          ? this.renderLogoutLinks()
+          : this.renderLoginLinks()}
       </ul>
 
 

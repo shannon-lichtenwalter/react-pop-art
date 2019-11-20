@@ -18,7 +18,7 @@ class LoginPage extends React.Component {
       .then(res => {
         this.context.setLoggedInUser(res)
       })
-      .catch((e) => this.setError(e));
+      .catch((e) => this.context.setError(e));
     this.props.history.push('/home');
   }
 

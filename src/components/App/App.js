@@ -7,6 +7,7 @@ import HomePage from '../HomePage/HomePage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
+import MyAccountPage from '../MyAccountPage/MyAccountPage';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import './App.css';
 import PopArtContext from '../../context/PopArtContext';
@@ -54,11 +55,21 @@ class App extends React.Component {
     ])
   }
 
+
   setLoggedInUser = user => {
     this.setState({
       currentUser: user
     })
   }
+
+  // findCurrentUser = () => {
+  //   UsersApiService.getLoggedInUser()
+  //       .then(res => {
+  //         return res;
+  //       })
+  //       .catch((e) => this.setError(e));
+  //   }
+
 
 
   componentDidMount() {
@@ -76,7 +87,7 @@ class App extends React.Component {
         })
         .catch((e) => this.setError(e));
     }
-  }
+  };
   render() {
     return (
       <PopArtContext.Provider value={{
@@ -106,6 +117,7 @@ class App extends React.Component {
                 <PublicOnlyRoute path='/login' component={LoginPage} />
                 <PublicOnlyRoute path='/register' component={RegisterPage} />
                 <PrivateRoute path='/create-event' component={CreateEventPage} />
+                <PrivateRoute path='/my-account' component={MyAccountPage}/>
                 <Route component={NotFoundPage} />
               </Switch>
             </ErrorBoundary>

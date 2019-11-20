@@ -47,7 +47,7 @@ class CreateEventPage extends React.Component {
       additional_details.value= ''
       img_url.value= ''
       })
-      .catch(this.context.setError)
+      .catch((e) => this.context.setError(e))
     
   }
 

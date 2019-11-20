@@ -17,7 +17,7 @@ handleRequestEvent= () => {
   .then(() => {
     return null; //possibly need to have something in state that reflects who has requested events.
   })
-  .catch(this.context.setError)
+  .catch((e) => this.context.setError)
 }
 
 
