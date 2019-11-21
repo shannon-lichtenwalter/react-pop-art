@@ -1,15 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PopArtContext from '../../context/PopArtContext';
 import UsersApiService from '../../services/users-api-service';
-import RequestorsApiService from '../../services/requestors-api-service';
+//import RequestorsApiService from '../../services/requestors-api-service';
 import EventsApiService from '../../services/events-api-service';
 import RequestedEvents from '../RequestedEvents/RequestedEvents';
 import HostedEvents from '../HostedEvents/HostedEvents';
 
-class MyAccountPage extends React.Component{
+class MyAccountPage extends React.Component {
   state = {
     user: null,
-    requests: [],
+    requests: this.context.userRequests,
     events: []
   };
 
@@ -21,47 +22,50 @@ class MyAccountPage extends React.Component{
     })
   }
 
-  componentDidMount(){
-      UsersApiService.getLoggedInUser()
-        .then(res => {
-          this.setUser(res);
+  componentDidMount() {
+    UsersApiService.getLoggedInUser()
+      .then(res => {
+        this.setUser(res);
+      })
+      .catch((e) => this.context.setError(e));
+
+    //replacing this with context link from app
+    // RequestorsApiService.getAllRequests()
+    //   .then(result => {
+    //     this.setState({
+    //       requests: result
+    //     })
+    //   })
+    //   .catch((e) => this.context.setError(e))
+
+    EventsApiService.getAllEventsHostedByUser()
+      .then(result => {
+        console.log(result);
+        this.setState({
+          events: result
         })
-        .catch((e) => this.context.setError(e));
-
-        RequestorsApiService.getAllRequests()
-          .then(result => {
-            this.setState({
-              requests: result
-            })
-          })
-          .catch((e) => this.context.setError(e))
-        
-        EventsApiService.getAllEventsHostedByUser()
-          .then(result => {
-            console.log(result);
-            this.setState({
-              events: result
-            })
-          })
-          .catch((e) => this.context.setError(e))
-    }
+      })
+      .catch((e) => this.context.setError(e))
+  }
 
 
 
-  render(){ 
-    return(
+  render() {
+    return (
       <>
-      <h2> Welcome back{this.state.user ? ', ' + this.state.user.username : ''} </h2>
-      <section>
-        <h2>Your Booking Requests</h2>
-          {this.state.requests ? <RequestedEvents requests={this.state.requests}/> : ''}
-      </section>
-  
-      <section>
-        <h2>Your Hosted Events</h2>
-        <button>Create New Event</button>
-        {this.state.events ? <HostedEvents events={this.state.events}/> : ''}
-        {/* <ul>
+        <h2> Welcome back{this.state.user ? ', ' + this.state.user.username : ''} </h2>
+        <section>
+          <h2>Your Booking Requests</h2>
+          {this.state.requests ? <RequestedEvents requests={this.state.requests} /> : ''}
+        </section>
+
+        <section>
+          <h2>Your Hosted Events</h2>
+          <Link to='/create-event'>
+            <button>Create New Event</button>
+          </Link>
+          {this.state.events ? <HostedEvents events={this.state.events} /> : ''}
+          {/* <ul>
           <li>{this.state.events[0].name} on {this.state.events[0].date}
             <button>Cancel Event</button>
           </li>
@@ -83,9 +87,9 @@ class MyAccountPage extends React.Component{
   
         </ul>
    */}
-      </section>
-  
-      {/* <section>
+        </section>
+
+        {/* <section>
         <h2>Options</h2>
         <ul>
           <li>Update Profile</li>

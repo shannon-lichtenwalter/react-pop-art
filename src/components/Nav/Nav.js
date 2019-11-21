@@ -11,6 +11,7 @@ class Nav extends React.Component {
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
     this.context.setLoggedIn();
+    this.context.clearUserRequests();
     this.context.setLoggedInUser(null);
   }
 

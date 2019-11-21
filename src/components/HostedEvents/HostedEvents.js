@@ -8,7 +8,7 @@ class HostedEvents extends React.Component{
       return(
         <li key={event.id}>{event.name} on {moment((event.date).toIso).format('LL')} at {moment(event.time, 'HH:mm').format('LT')}
         <button>Cancel Event</button>
-        Requesting to Book Event: {event.requestors ? <RequestorsList requestors={event.requestors}/> : 'none'}
+        Requesting to Book Event: {event.requestors ? <RequestorsList eventId ={event.id} requestors={event.requestors}/> : 'none'}
         <ul>
 
         </ul>

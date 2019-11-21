@@ -17,12 +17,14 @@ import PrivateRoute from '../Utils/PrivateRoute';
 import TokenService from '../../services/token-service';
 import EventsApiService from '../../services/events-api-service';
 import UsersApiService from '../../services/users-api-service';
+import RequestorsApiService from '../../services/requestors-api-service';
 
 class App extends React.Component {
   state = {
     events: [],
     error: null,
     currentUser: null,
+    userRequests: null,
     loggedIn: TokenService.hasAuthToken()
       ? true
       : false
@@ -60,7 +62,23 @@ class App extends React.Component {
     this.setState({
       currentUser: user
     })
+  };
+
+  clearUserRequests = () => {
+    this.setState({
+      userRequests: null,
+    })
   }
+
+  setUserRequests = () => {
+    RequestorsApiService.getAllRequests()
+      .then(result => {
+        this.setState({
+          userRequests: result
+        })
+      })
+      .catch((e) => this.context.setError(e))
+  };
 
   // findCurrentUser = () => {
   //   UsersApiService.getLoggedInUser()
@@ -73,7 +91,7 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    //window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     EventsApiService.archiveEvents()
       .then((res) => {
         return null
@@ -86,8 +104,20 @@ class App extends React.Component {
           this.setLoggedInUser(res);
         })
         .catch((e) => this.setError(e));
-    }
+
+      RequestorsApiService.getAllRequests()
+        .then(result => {
+          this.setState({
+            userRequests: result
+          })
+        })
+        .catch((e) => this.context.setError(e));
+
+        this.setUserRequests();
+    };
   };
+
+
   render() {
     return (
       <PopArtContext.Provider value={{
@@ -99,7 +129,10 @@ class App extends React.Component {
         setLoggedIn: this.setLoggedIn,
         loggedIn: this.state.loggedIn,
         setLoggedInUser: this.setLoggedInUser,
-        currentUser: this.state.currentUser
+        currentUser: this.state.currentUser,
+        userRequests: this.state.userRequests,
+        setUserRequests: this.setUserRequests,
+        clearUserRequests: this.clearUserRequests
       }} >
         <div className='App'>
           <nav>
@@ -117,7 +150,7 @@ class App extends React.Component {
                 <PublicOnlyRoute path='/login' component={LoginPage} />
                 <PublicOnlyRoute path='/register' component={RegisterPage} />
                 <PrivateRoute path='/create-event' component={CreateEventPage} />
-                <PrivateRoute path='/my-account' component={MyAccountPage}/>
+                <PrivateRoute path='/my-account' component={MyAccountPage} />
                 <Route component={NotFoundPage} />
               </Switch>
             </ErrorBoundary>

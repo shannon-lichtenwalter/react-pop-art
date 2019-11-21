@@ -18,24 +18,45 @@ const RequestorsApiService = {
       )
   },
 
-addNewRequest(event_id){
-  return fetch(`${config.API_ENDPOINT}/requests`, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      'authorization': `bearer ${TokenService.getAuthToken()}`
-    },
-    body: JSON.stringify({
-      event_id
+  addNewRequest(event_id) {
+    return fetch(`${config.API_ENDPOINT}/requests`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({
+        event_id
+      })
     })
-  })
-    .then(res =>
-      (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    )
-},
-  
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+
+  updateRequest(requestorId, eventId, status) {
+    const updatedRequest = {
+      event_id: eventId,
+      user_id: requestorId,
+      booking_status: status
+    }
+    return fetch(`${config.API_ENDPOINT}/requests`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify(updatedRequest)
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
   }
+
+}
 
 export default RequestorsApiService;
