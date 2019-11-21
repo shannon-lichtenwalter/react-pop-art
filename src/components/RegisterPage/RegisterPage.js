@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import AuthApiService from '../../services/auth-api-service';
 
 class RegisterPage extends React.Component {
   state = {
     error: null,
   }
+
   //   componentDidMount() {
   //     window.scrollTo(0, 0);
   // }
@@ -20,14 +21,20 @@ class RegisterPage extends React.Component {
       })
       return null;
     }
-    if (password.value.length < 6) {
-      this.setState({
-        error: 'Password must be longer than 6 characters'
-      })
-      return null;
-    }
 
-    }
+    AuthApiService.postUser({
+      username: username.value,
+      password: password.value,
+    })
+      .then(user => {
+          username.value = '';
+          password.value = '';
+          password2.value = '';
+          this.props.history.push('/login')
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
   }
 
 
@@ -51,11 +58,11 @@ class RegisterPage extends React.Component {
             </div>
             <div>
               <label htmlFor="password">Password:</label>
-              <input placeholder="must contain one number" type="text" name="password" id="password" required />
+              <input placeholder="must contain one number" type="password" name="password" id="password" required />
             </div>
             <div>
               <label htmlFor="password2">Confirm Password:</label>
-              <input placeholder="must contain one number" type="text" name="password2" id="password2" required />
+              <input placeholder="must contain one number" type="password" name="password2" id="password2" required />
             </div>
             <button type="submit">Register</button>
             <div>
