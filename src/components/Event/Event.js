@@ -27,6 +27,10 @@ class Event extends React.Component {
     let disabledStatus= false;
     const alreadyRequested = this.context.userRequests.find(request => request.event_id === this.props.event.id );
     const alreadyHosting = this.context.currentUser.user_id === this.props.event.host_id;
+    console.log(this.context.currentUser.user_id);
+    console.log(this.props.event.host_id)
+    console.log(alreadyHosting);
+    console.log(this.props.event);
     if(alreadyHosting){
       buttonText = 'This is your event';
       disabledStatus = true;
