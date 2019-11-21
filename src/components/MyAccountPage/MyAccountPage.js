@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PopArtContext from '../../context/PopArtContext';
 import UsersApiService from '../../services/users-api-service';
-//import RequestorsApiService from '../../services/requestors-api-service';
+import RequestorsApiService from '../../services/requestors-api-service';
 import EventsApiService from '../../services/events-api-service';
 import RequestedEvents from '../RequestedEvents/RequestedEvents';
 import HostedEvents from '../HostedEvents/HostedEvents';
@@ -10,7 +10,7 @@ import HostedEvents from '../HostedEvents/HostedEvents';
 class MyAccountPage extends React.Component {
   state = {
     user: null,
-    requests: this.context.userRequests,
+    requests: null,
     events: []
   };
 
@@ -22,6 +22,16 @@ class MyAccountPage extends React.Component {
     })
   }
 
+  getAllHostedEvents = () => {
+    EventsApiService.getAllEventsHostedByUser()
+      .then(result => {
+        this.setState({
+          events: result
+        })
+      })
+      .catch((e) => this.context.setError(e))
+  }
+
   componentDidMount() {
     UsersApiService.getLoggedInUser()
       .then(res => {
@@ -29,23 +39,25 @@ class MyAccountPage extends React.Component {
       })
       .catch((e) => this.context.setError(e));
 
-    //replacing this with context link from app
-    // RequestorsApiService.getAllRequests()
-    //   .then(result => {
-    //     this.setState({
-    //       requests: result
-    //     })
-    //   })
-    //   .catch((e) => this.context.setError(e))
 
-    EventsApiService.getAllEventsHostedByUser()
+    //replacing this with context link from app
+    RequestorsApiService.getAllRequests()
       .then(result => {
-        console.log(result);
         this.setState({
-          events: result
+          requests: result
         })
       })
       .catch((e) => this.context.setError(e))
+
+    // EventsApiService.getAllEventsHostedByUser()
+    //   .then(result => {
+    //     console.log(result);
+    //     this.setState({
+    //       events: result
+    //     })
+    //   })
+    //   .catch((e) => this.context.setError(e))
+    this.getAllHostedEvents();
   }
 
 
@@ -64,7 +76,7 @@ class MyAccountPage extends React.Component {
           <Link to='/create-event'>
             <button>Create New Event</button>
           </Link>
-          {this.state.events ? <HostedEvents events={this.state.events} /> : ''}
+          {this.state.events ? <HostedEvents events={this.state.events} getAllHostedEvents={this.getAllHostedEvents}/> : ''}
           {/* <ul>
           <li>{this.state.events[0].name} on {this.state.events[0].date}
             <button>Cancel Event</button>

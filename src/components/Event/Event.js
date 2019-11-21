@@ -27,13 +27,17 @@ class Event extends React.Component {
     let disabledStatus= false;
     const alreadyRequested = this.context.userRequests.find(request => request.event_id === this.props.event.id );
     const alreadyHosting = this.context.currentUser.user_id === this.props.event.host_id;
-    console.log(alreadyRequested);
     if(alreadyHosting){
       buttonText = 'This is your event';
       disabledStatus = true;
     }
     if(alreadyRequested){
       buttonText = `Request ${alreadyRequested.booking_status}`;
+      disabledStatus = true;
+    }
+
+    if(this.props.event.slots_available < 1){
+      buttonText = 'Event is full';
       disabledStatus = true;
     }
 
@@ -51,7 +55,7 @@ class Event extends React.Component {
   renderEventDetails = () => {
     return (
       <>
-        <h4>{this.props.event.slots_available} Artist Slots Available</h4>
+        <h4>{this.props.event.slots_available === 1 ? this.props.event.slots_available + ' Artist Slot Available': this.props.event.slots_available + ' Artist Slots Available'}</h4>
         {this.renderRequestToBookButton()}
         {/* <button
           disabled=
