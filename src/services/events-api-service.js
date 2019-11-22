@@ -29,7 +29,7 @@ const EventsApiService = {
   },
 
   postEvent(newEvent) {
-    return fetch(`${config.API_ENDPOINT}/events/create`, {
+    return fetch(`${config.API_ENDPOINT}/events/user-events`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -58,14 +58,15 @@ const EventsApiService = {
   },
 
   updateSlotsAvailable(event_id) {
-    return fetch(`${config.API_ENDPOINT}/events/updateSlots`, {
+    return fetch(`${config.API_ENDPOINT}/events/user-events`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        id: event_id
+        id: event_id,
+        slots_available: 'decrease' 
       })
     })
       .then(res =>
@@ -73,6 +74,26 @@ const EventsApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+  },
+
+
+  deleteEvent(event_id){
+    console.log(event_id);
+    return fetch(`${config.API_ENDPOINT}/events/user-events`,{
+      method:'DELETE',
+      headers:{
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({
+        id: event_id 
+    })
+  })
+  .then(res =>
+    (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : null
+  )
   }
 
 }

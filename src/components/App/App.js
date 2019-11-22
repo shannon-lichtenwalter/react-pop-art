@@ -57,6 +57,13 @@ class App extends React.Component {
     ])
   }
 
+  deleteEvent = event_id => {
+    const updatedEvents = this.state.events.filter(event => event.id !== event_id);
+    this.setState({
+      events: updatedEvents
+    })
+  }
+
 
   setLoggedInUser = user => {
     this.setState({
@@ -96,6 +103,12 @@ class App extends React.Component {
         return null
       })
       .catch((e) => this.setError(e));
+    
+    EventsApiService.getEvents()
+      .then(res => {
+        this.setEvents(res)
+      })
+      .catch((e) => this.setError(e));
 
     if (this.state.loggedIn) {
       UsersApiService.getLoggedInUser()
@@ -131,7 +144,8 @@ class App extends React.Component {
         currentUser: this.state.currentUser,
         userRequests: this.state.userRequests,
         setUserRequests: this.setUserRequests,
-        clearUserRequests: this.clearUserRequests
+        clearUserRequests: this.clearUserRequests,
+        deleteEvent: this.deleteEvent
       }} >
         <div className='App'>
           <nav>

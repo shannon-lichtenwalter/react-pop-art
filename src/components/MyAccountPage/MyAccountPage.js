@@ -22,6 +22,13 @@ class MyAccountPage extends React.Component {
     })
   }
 
+  deleteHostsEvent = (event_id) => {
+    const updatedEvents = this.state.events.filter(event => event.id !== event_id);
+    this.setState({
+      events: updatedEvents
+    });
+  }
+
   getAllHostedEvents = () => {
     EventsApiService.getAllEventsHostedByUser()
       .then(result => {
@@ -76,7 +83,7 @@ class MyAccountPage extends React.Component {
           <Link to='/create-event'>
             <button>Create New Event</button>
           </Link>
-          {this.state.events ? <HostedEvents events={this.state.events} getAllHostedEvents={this.getAllHostedEvents}/> : ''}
+          {this.state.events ? <HostedEvents deleteHostsEvent = {this.deleteHostsEvent} events={this.state.events} getAllHostedEvents={this.getAllHostedEvents}/> : ''}
           {/* <ul>
           <li>{this.state.events[0].name} on {this.state.events[0].date}
             <button>Cancel Event</button>
