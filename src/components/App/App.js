@@ -100,7 +100,6 @@ class App extends React.Component {
     if (this.state.loggedIn) {
       UsersApiService.getLoggedInUser()
         .then(res => {
-          console.log('here' + res);
           this.setLoggedInUser(res);
         })
         .catch((e) => this.setError(e));

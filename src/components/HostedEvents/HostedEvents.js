@@ -6,7 +6,6 @@ import './HostedEvents.css';
 class HostedEvents extends React.Component{
   hostedEvents = () => {
     return this.props.events.map(event => {
-      console.log(event);
       return(
         <li key={event.id}>{event.name} on {moment((event.date).toLocaleString()).format('LL')} at {moment(event.time, 'HH:mm').format('LT')}
         <div>Artist Slots Available: {event.slots_available}</div>

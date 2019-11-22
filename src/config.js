@@ -1,5 +1,6 @@
-export default {
+
+  export default {
   API_KEY: process.env.REACT_APP_API_KEY,
-  API_ENDPOINT: 'http://localhost:8000/api',
-  TOKEN_KEY: 'pop-art-client-auth-token'
+  API_ENDPOINT: 'https://aqueous-retreat-24827.herokuapp.com/api',
+  TOKEN_KEY: process.env.TOKEN_KEY
 }
