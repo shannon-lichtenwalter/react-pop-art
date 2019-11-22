@@ -13,6 +13,7 @@ class Nav extends React.Component {
     this.context.setLoggedIn();
     this.context.clearUserRequests();
     this.context.clearUserHostedEvents();
+    this.context.removeFilterFromEvents();
     this.context.setLoggedInUser(null);
   }
 

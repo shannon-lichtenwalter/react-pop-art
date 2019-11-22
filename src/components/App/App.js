@@ -18,6 +18,7 @@ import TokenService from '../../services/token-service';
 import EventsApiService from '../../services/events-api-service';
 import UsersApiService from '../../services/users-api-service';
 import RequestorsApiService from '../../services/requestors-api-service';
+import EventPage from '../EventPage/EventPage';
 
 class App extends React.Component {
   state = {
@@ -104,10 +105,16 @@ class App extends React.Component {
       .catch((e) => this.context.setError(e))
   };
 
+  removeFilterFromEvents = () => {
+    EventsApiService.getEvents()
+          .then(res => {
+            this.setEvents(res);
+          })
+  }
+
   getAllHostedEvents = () => {
     EventsApiService.getAllEventsHostedByUser()
       .then(result => {
-        console.log(result);
         this.setState({
           userHostedEvents: result
         })
@@ -176,7 +183,8 @@ class App extends React.Component {
         deleteEvent: this.deleteEvent,
         getAllHostedEvents: this.getAllHostedEvents,
         clearUserHostedEvents: this.clearUserHostedEvents,
-        updateSlotsAvailable: this.updateSlotsAvailable
+        updateSlotsAvailable: this.updateSlotsAvailable,
+        removeFilterFromEvents: this.removeFilterFromEvents
       }} >
         <div className='App'>
           <nav>
@@ -193,6 +201,7 @@ class App extends React.Component {
                 <Route path='/home' component={HomePage} />
                 <PublicOnlyRoute path='/login' component={LoginPage} />
                 <PublicOnlyRoute path='/register' component={RegisterPage} />
+                <PrivateRoute path='/event/:eventId' component={EventPage} />
                 <PrivateRoute path='/create-event' component={CreateEventPage} />
                 <PrivateRoute path='/my-account' component={MyAccountPage} />
                 <Route component={NotFoundPage} />

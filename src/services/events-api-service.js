@@ -3,8 +3,19 @@ import TokenService from './token-service';
 
 const EventsApiService = {
 
-  getEvents() {
-    return fetch(`${config.API_ENDPOINT}/events`, {
+  getEvents(city, event_type, date) {
+    let filter = { city, event_type, date };
+    let queryString = '';
+    let strings = []
+
+    for (const key in filter){
+      if(filter[key]){
+        strings.push(`${key}=${filter[key]}`)
+      }
+    }
+    queryString = strings.join('&')
+
+    return fetch(`${config.API_ENDPOINT}/events/?${queryString}`, {
       method: 'GET',
     })
       .then(res =>
@@ -51,7 +62,7 @@ const EventsApiService = {
       method: 'PATCH'
     })
       .then(res => {
-        if(!res.ok){
+        if (!res.ok) {
           return res.json().then(e => Promise.reject(e))
         }
         return null
@@ -67,7 +78,7 @@ const EventsApiService = {
       },
       body: JSON.stringify({
         id: event_id,
-        slots_available: 'decrease' 
+        slots_available: 'decrease'
       })
     })
       .then(res =>
@@ -78,22 +89,22 @@ const EventsApiService = {
   },
 
 
-  deleteEvent(event_id){
-    return fetch(`${config.API_ENDPOINT}/events/user-events`,{
-      method:'DELETE',
-      headers:{
+  deleteEvent(event_id) {
+    return fetch(`${config.API_ENDPOINT}/events/user-events`, {
+      method: 'DELETE',
+      headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        id: event_id 
+        id: event_id
+      })
     })
-  })
-  .then(res =>
-    (!res.ok)
-      ? res.json().then(e => Promise.reject(e))
-      : null
-  )
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : null
+      )
   }
 
 }
