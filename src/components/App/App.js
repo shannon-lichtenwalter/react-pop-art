@@ -39,7 +39,12 @@ class App extends React.Component {
         : false
     })
   }
-
+  
+  clearError = () => {
+    this.setState({
+      error: null,
+    })
+  }
   setError = (err) => {
     this.setState({
       error: err.error
@@ -102,7 +107,7 @@ class App extends React.Component {
           userRequests: result
         })
       })
-      .catch((e) => this.context.setError(e))
+      .catch((e) => this.setError(e))
   };
 
   removeFilterFromEvents = () => {
@@ -119,7 +124,7 @@ class App extends React.Component {
           userHostedEvents: result
         })
       })
-      .catch((e) => this.context.setError(e))
+      .catch((e) => this.setError(e))
   }
 
   updateSlotsAvailable = (event_id) => {
@@ -184,7 +189,8 @@ class App extends React.Component {
         getAllHostedEvents: this.getAllHostedEvents,
         clearUserHostedEvents: this.clearUserHostedEvents,
         updateSlotsAvailable: this.updateSlotsAvailable,
-        removeFilterFromEvents: this.removeFilterFromEvents
+        removeFilterFromEvents: this.removeFilterFromEvents,
+        clearError: this.clearError
       }} >
         <div className='App'>
           <nav>

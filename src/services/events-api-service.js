@@ -25,6 +25,20 @@ const EventsApiService = {
       )
   },
 
+  getCurrentEvent(event_id){
+    return fetch(`${config.API_ENDPOINT}/events/event/${event_id}`, {
+      method: 'GET',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+
   getAllEventsHostedByUser() {
     return fetch(`${config.API_ENDPOINT}/events/user-events`, {
       method: 'GET',

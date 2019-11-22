@@ -40,6 +40,7 @@ class MyAccountPage extends React.Component {
   // }
 
   componentDidMount() {
+    this.context.clearError();
     // UsersApiService.getLoggedInUser()
     //   .then(res => {
     //     this.setUser(res);

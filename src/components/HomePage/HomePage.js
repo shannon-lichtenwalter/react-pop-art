@@ -13,6 +13,7 @@ class HomePage extends React.Component {
   static contextType = PopArtContext;
 
   componentDidMount() {
+    this.context.clearError();
 
     this.context.removeFilterFromEvents();
     // window.scrollTo(0, 0);

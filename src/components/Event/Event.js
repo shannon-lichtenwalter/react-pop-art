@@ -3,7 +3,7 @@ import './Event.css';
 import * as moment from 'moment';
 import PopArtContext from '../../context/PopArtContext';
 import RequestorsApiService from '../../services/requestors-api-service';
-
+import { Link } from 'react-router-dom';
 
 class Event extends React.Component {
   state = {
@@ -23,39 +23,39 @@ class Event extends React.Component {
   }
 
   renderRequestToBookButton = () => {
-    let buttonText= 'Request To Book this Event';
-    let disabledStatus= false;
-    const alreadyRequested = this.context.userRequests.find(request => request.event_id === this.props.event.id );
+    let buttonText = 'Request To Book this Event';
+    let disabledStatus = false;
+    const alreadyRequested = this.context.userRequests.find(request => request.event_id === this.props.event.id);
     const alreadyHosting = this.context.currentUser.user_id === this.props.event.host_id;
-    if(alreadyHosting){
+    if (alreadyHosting) {
       buttonText = 'This is your event';
       disabledStatus = true;
     }
-    if(alreadyRequested){
+    if (alreadyRequested) {
       buttonText = `Request ${alreadyRequested.booking_status}`;
       disabledStatus = true;
     }
 
-    if(this.props.event.slots_available < 1){
+    if (this.props.event.slots_available < 1) {
       buttonText = 'Event is full';
       disabledStatus = true;
     }
 
     return (
-      <button 
-      disabled={disabledStatus}
-      onClick={() => this.handleRequestEvent()}>
+      <button
+        disabled={disabledStatus}
+        onClick={() => this.handleRequestEvent()}>
         {buttonText}
-      </button> 
+      </button>
     )
   }
-  
+
 
 
   renderEventDetails = () => {
     return (
       <>
-        <h4>{this.props.event.slots_available === 1 ? this.props.event.slots_available + ' Artist Slot Available': this.props.event.slots_available + ' Artist Slots Available'}</h4>
+        <h4>{this.props.event.slots_available === 1 ? this.props.event.slots_available + ' Artist Slot Available' : this.props.event.slots_available + ' Artist Slots Available'}</h4>
         {this.renderRequestToBookButton()}
         {/* <button
           disabled=
@@ -90,6 +90,7 @@ class Event extends React.Component {
 
   render() {
     const event = this.props.event;
+    const eventPage = `/event/${event.id}`
 
     return (
       <section className={event.id}>
@@ -98,8 +99,7 @@ class Event extends React.Component {
         <img src={!event.img_url ? 'https://images.unsplash.com/photo-1514575619841-1a3d949d3277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=582&q=80' : event.img_url} alt='event' />
         <h3>{moment(event.date).format('LL')} at {moment(event.time, 'HH:mm').format('LT')}</h3>
         <h4>{event.location}, {event.city}, {event.state}</h4>
-        {this.context.loggedIn && this.state.expand && this.renderEventDetails()}
-        {this.context.loggedIn && this.renderExpandButton()}
+        {this.context.loggedIn && <Link to={eventPage}><button>View Event Details</button></Link>}
       </section>
     )
   }
