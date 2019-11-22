@@ -10,13 +10,14 @@ class RequestorsList extends React.Component {
   handleApproveRequest = (requestorId) => {
     RequestorsApiService.updateRequest(requestorId, this.props.eventId, 'Accepted')
       .then(res => {
-        this.props.getAllHostedEvents();
+        this.context.getAllHostedEvents();
       })
       .catch((e) => this.context.setError)
     
 
       EventsApiService.updateSlotsAvailable(this.props.eventId)
         .then(res => {
+          this.context.updateSlotsAvailable(this.props.eventId);
           return null
         })
         .catch((e) => this.context.setError)
@@ -26,7 +27,7 @@ class RequestorsList extends React.Component {
   handleDenyRequest = (requestorId) => {
     RequestorsApiService.updateRequest(requestorId, this.props.eventId, 'Denied')
       .then(res => {
-        this.props.getAllHostedEvents();
+        this.context.getAllHostedEvents();
       })
       .catch((e) => this.context.setError)
   }
@@ -34,7 +35,6 @@ class RequestorsList extends React.Component {
 
   renderRequestorsList = () => {
     this.props.requestors.sort((a,b) => a.booking_status > b.booking_status ? 1 : -1);
-    //this.props.requestors.sort()
     return this.props.requestors.map(requestor => {
       return (
         <li key={requestor.user_id}>{requestor.username} has requested to book this event. Status: {requestor.booking_status}

@@ -12,6 +12,7 @@ class Nav extends React.Component {
     TokenService.clearAuthToken();
     this.context.setLoggedIn();
     this.context.clearUserRequests();
+    this.context.clearUserHostedEvents();
     this.context.setLoggedInUser(null);
   }
 

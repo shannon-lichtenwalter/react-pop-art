@@ -1,60 +1,63 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PopArtContext from '../../context/PopArtContext';
-import UsersApiService from '../../services/users-api-service';
-import RequestorsApiService from '../../services/requestors-api-service';
-import EventsApiService from '../../services/events-api-service';
+// import UsersApiService from '../../services/users-api-service';
+// import RequestorsApiService from '../../services/requestors-api-service';
+// import EventsApiService from '../../services/events-api-service';
 import RequestedEvents from '../RequestedEvents/RequestedEvents';
 import HostedEvents from '../HostedEvents/HostedEvents';
 
 class MyAccountPage extends React.Component {
   state = {
-    user: null,
-    requests: null,
+    user: this.context.currentUser,
+    requests: this.context.userRequests,
     events: []
   };
 
   static contextType = PopArtContext;
 
-  setUser = (user) => {
-    this.setState({
-      user
-    })
-  }
+  // setUser = (user) => {
+  //   this.setState({
+  //     user
+  //   })
+  // }
 
-  deleteHostsEvent = (event_id) => {
-    const updatedEvents = this.state.events.filter(event => event.id !== event_id);
-    this.setState({
-      events: updatedEvents
-    });
-  }
+  // deleteHostsEvent = (event_id) => {
+  //   const updatedEvents = this.state.events.filter(event => event.id !== event_id);
+  //   this.setState({
+  //     events: updatedEvents
+  //   });
+  // }
 
-  getAllHostedEvents = () => {
-    EventsApiService.getAllEventsHostedByUser()
-      .then(result => {
-        this.setState({
-          events: result
-        })
-      })
-      .catch((e) => this.context.setError(e))
-  }
+  // getAllHostedEvents = () => {
+  //   EventsApiService.getAllEventsHostedByUser()
+  //     .then(result => {
+  //       this.setState({
+  //         events: result
+  //       })
+  //     })
+  //     .catch((e) => this.context.setError(e))
+  // }
 
   componentDidMount() {
-    UsersApiService.getLoggedInUser()
-      .then(res => {
-        this.setUser(res);
-      })
-      .catch((e) => this.context.setError(e));
+    // UsersApiService.getLoggedInUser()
+    //   .then(res => {
+    //     this.setUser(res);
+    //   })
+    //   .catch((e) => this.context.setError(e));
 
+    //   this.setState({
+    //     requests: this.context.userRequests
+    //   });
 
     //replacing this with context link from app
-    RequestorsApiService.getAllRequests()
-      .then(result => {
-        this.setState({
-          requests: result
-        })
-      })
-      .catch((e) => this.context.setError(e))
+    // RequestorsApiService.getAllRequests()
+    //   .then(result => {
+    //     this.setState({
+    //       requests: result
+    //     })
+    //   })
+    //   .catch((e) => this.context.setError(e))
 
     // EventsApiService.getAllEventsHostedByUser()
     //   .then(result => {
@@ -64,18 +67,20 @@ class MyAccountPage extends React.Component {
     //     })
     //   })
     //   .catch((e) => this.context.setError(e))
-    this.getAllHostedEvents();
+    //this.getAllHostedEvents();
   }
 
 
 
   render() {
+    const user = this.context.currentUser;
+    
     return (
       <>
-        <h2> Welcome back{this.state.user ? ', ' + this.state.user.username : ''} </h2>
+        <h2> Welcome back{user ? ', ' + user.username : ''} </h2>
         <section>
           <h2>Your Booking Requests</h2>
-          {this.state.requests ? <RequestedEvents requests={this.state.requests} /> : ''}
+          {this.context.userRequests ? <RequestedEvents /> : ''}
         </section>
 
         <section>
@@ -83,7 +88,7 @@ class MyAccountPage extends React.Component {
           <Link to='/create-event'>
             <button>Create New Event</button>
           </Link>
-          {this.state.events ? <HostedEvents deleteHostsEvent = {this.deleteHostsEvent} events={this.state.events} getAllHostedEvents={this.getAllHostedEvents}/> : ''}
+          {this.context.userHostedEvents ? <HostedEvents /> : ''}
           {/* <ul>
           <li>{this.state.events[0].name} on {this.state.events[0].date}
             <button>Cancel Event</button>

@@ -24,7 +24,8 @@ class App extends React.Component {
     events: [],
     error: null,
     currentUser: null,
-    userRequests: null,
+    userRequests: [],
+    userHostedEvents: [],
     loggedIn: TokenService.hasAuthToken()
       ? true
       : false
@@ -51,17 +52,27 @@ class App extends React.Component {
   }
 
   addEvent = event => {
-    this.setState([
+    this.setState({
+      events:[
       ...this.state.events,
       event
-    ])
+    ],
+    userHostedEvents: [
+      ...this.state.userHostedEvents,
+      event
+    ]})
   }
 
   deleteEvent = event_id => {
     const updatedEvents = this.state.events.filter(event => event.id !== event_id);
     this.setState({
       events: updatedEvents
-    })
+    });
+
+    const updatedUserHostedEvents = this.state.userHostedEvents.filter(event => event.id !== event_id);
+    this.setState({
+      userHostedEvents: updatedUserHostedEvents
+    });
   }
 
 
@@ -73,7 +84,13 @@ class App extends React.Component {
 
   clearUserRequests = () => {
     this.setState({
-      userRequests: null,
+      userRequests: [],
+    })
+  }
+
+  clearUserHostedEvents = () => {
+    this.setState({
+      userHostedEvents: [],
     })
   }
 
@@ -87,14 +104,29 @@ class App extends React.Component {
       .catch((e) => this.context.setError(e))
   };
 
-  // findCurrentUser = () => {
-  //   UsersApiService.getLoggedInUser()
-  //       .then(res => {
-  //         return res;
-  //       })
-  //       .catch((e) => this.setError(e));
-  //   }
+  getAllHostedEvents = () => {
+    EventsApiService.getAllEventsHostedByUser()
+      .then(result => {
+        console.log(result);
+        this.setState({
+          userHostedEvents: result
+        })
+      })
+      .catch((e) => this.context.setError(e))
+  }
 
+  updateSlotsAvailable = (event_id) => {
+    const allEvents = this.state.events;
+    const eventIndex = this.state.events.findIndex(event => event.id === event_id);
+    const event = (this.state.events[eventIndex]);
+    if (event.slots_available > 0) {
+      event.slots_available = (parseInt(event.slots_available) - 1);
+      allEvents[eventIndex] = event;
+      this.setState({
+        events: allEvents
+      })
+    }
+  }
 
   componentDidMount() {
     // window.scrollTo(0, 0);
@@ -102,13 +134,14 @@ class App extends React.Component {
       .then((res) => {
         return null
       })
-      .catch((e) => this.setError(e));
-    
-    EventsApiService.getEvents()
-      .then(res => {
-        this.setEvents(res)
+      .then(() => {
+        EventsApiService.getEvents()
+          .then(res => {
+            this.setEvents(res);
+          })
       })
       .catch((e) => this.setError(e));
+
 
     if (this.state.loggedIn) {
       UsersApiService.getLoggedInUser()
@@ -117,16 +150,10 @@ class App extends React.Component {
         })
         .catch((e) => this.setError(e));
 
-      RequestorsApiService.getAllRequests()
-        .then(result => {
-          this.setState({
-            userRequests: result
-          })
-        })
-        .catch((e) => this.context.setError(e));
-
-        this.setUserRequests();
+      this.setUserRequests();
+      this.getAllHostedEvents();
     };
+
   };
 
 
@@ -143,9 +170,13 @@ class App extends React.Component {
         setLoggedInUser: this.setLoggedInUser,
         currentUser: this.state.currentUser,
         userRequests: this.state.userRequests,
+        userHostedEvents: this.state.userHostedEvents,
         setUserRequests: this.setUserRequests,
         clearUserRequests: this.clearUserRequests,
-        deleteEvent: this.deleteEvent
+        deleteEvent: this.deleteEvent,
+        getAllHostedEvents: this.getAllHostedEvents,
+        clearUserHostedEvents: this.clearUserHostedEvents,
+        updateSlotsAvailable: this.updateSlotsAvailable
       }} >
         <div className='App'>
           <nav>

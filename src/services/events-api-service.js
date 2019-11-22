@@ -50,11 +50,12 @@ const EventsApiService = {
     return fetch(`${config.API_ENDPOINT}/events`, {
       method: 'PATCH'
     })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
+      .then(res => {
+        if(!res.ok){
+          return res.json().then(e => Promise.reject(e))
+        }
+        return null
+      })
   },
 
   updateSlotsAvailable(event_id) {
@@ -78,7 +79,6 @@ const EventsApiService = {
 
 
   deleteEvent(event_id){
-    console.log(event_id);
     return fetch(`${config.API_ENDPOINT}/events/user-events`,{
       method:'DELETE',
       headers:{

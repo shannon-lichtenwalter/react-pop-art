@@ -15,6 +15,7 @@ class LoginPage extends React.Component {
   handleLoginSuccess = () => {
     this.context.setLoggedIn();
     this.context.setUserRequests();
+    this.context.getAllHostedEvents();
     UsersApiService.getLoggedInUser()
       .then(res => {
         this.context.setLoggedInUser(res)
