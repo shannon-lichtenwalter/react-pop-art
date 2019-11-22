@@ -15,7 +15,6 @@ class EventPage extends React.Component {
   componentDidMount = () => {
     EventsApiService.getCurrentEvent(this.props.match.params.eventId)
       .then(res => {
-        console.log(res);
         this.setState({
           event: res
         })

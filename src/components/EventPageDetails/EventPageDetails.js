@@ -33,7 +33,7 @@ class EventPageDetails extends React.Component{
       disabledStatus = true;
     }
 
-    if(this.props.event.slots_available < 1){
+    if(this.props.event.slots_available < 1 && !alreadyHosting){
       buttonText = 'Event is full';
       disabledStatus = true;
     }
