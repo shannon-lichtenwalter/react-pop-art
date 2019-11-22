@@ -6,12 +6,15 @@ import PopArtContext from '../../context/PopArtContext';
 // import EventsApiService from '../../services/events-api-service';
 import RequestedEvents from '../RequestedEvents/RequestedEvents';
 import HostedEvents from '../HostedEvents/HostedEvents';
+import UsersApiService from '../../services/users-api-service';
+import TokenService from '../../services/token-service';
 
 class MyAccountPage extends React.Component {
   state = {
     user: this.context.currentUser,
     requests: this.context.userRequests,
-    events: []
+    events: [],
+    deletingAccount: false
   };
 
   static contextType = PopArtContext;
@@ -71,7 +74,42 @@ class MyAccountPage extends React.Component {
     //this.getAllHostedEvents();
   }
 
+  handleDeleteClicked = () => {
+    this.setState({
+      deletingAccount:true
+    })
+  }
 
+  handleCancelDelete = () => {
+    this.setState({
+      deletingAccount:false
+    })
+  }
+
+  deleteAccount = () => {
+    UsersApiService.deleteAccount()
+      .then(() => {
+        TokenService.clearAuthToken();
+    this.context.setLoggedIn();
+    this.context.clearError();
+    this.context.clearUserRequests();
+    this.context.clearUserHostedEvents();
+    this.context.removeFilterFromEvents();
+    this.context.setLoggedInUser(null);
+      })
+      .catch((e) => this.context.setError)
+  }
+
+renderDeleteConfirmation = () => {
+  return (
+    <>
+      <p>Warning, by deleting your account you will also be deleting all of your posted events and all of your event requests.</p>
+      <h4>Are You Sure You Want to Delete?</h4>
+      <button onClick ={()=> this.deleteAccount()}>yes, delete my account now</button>
+      <button onClick={()=> this.handleCancelDelete()}>no, I changed my mind</button>
+    </>
+  )
+}
 
   render() {
     const user = this.context.currentUser;
@@ -114,14 +152,12 @@ class MyAccountPage extends React.Component {
    */}
         </section>
 
-        {/* <section>
-        <h2>Options</h2>
-        <ul>
-          <li>Update Profile</li>
-          <li>Change Password</li>
-          <li>Delete Account</li>
-        </ul>
-      </section> */}
+        <section>
+        <h2>Account Options</h2>
+        
+          <button onClick={()=> this.handleDeleteClicked()}>Delete Account</button>
+          {this.state.deletingAccount && this.renderDeleteConfirmation()}
+      </section>
       </>
     )
   }
