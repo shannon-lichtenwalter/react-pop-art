@@ -19,14 +19,11 @@ class LandingPage extends React.Component{
               here to connect event organizers to the talented people that can help make their event a success. Pop Art believes strongly
               in the values of expanding support of local creativity and artistry throughout communities across the country.
             </p>
-            <p>Artists on Pop Art can browse event postings and if they find one that sounds like a good fit then they can request to
-              fill one of the open slots. Event organizers can view the artist profile where they can checkout portfolios, work samples, or 
-              bandcamp links to see if the artist would be a good fit for the event. If so, the venue can proceed to accept the Artist's request.
-              Following an event, hosts and artists can leave reviews for one another detailing their event experience. This feature of 
-              Pop Art will help to discourage venues from cancelling events at the last minute or for artists to no-show to the events.
+            <p>Artists using Pop Art can browse event postings and if they find one that sounds like a good fit then they can request to
+              fill one of the open slots. The event host can then view the request and can proceed to accept or deny it.
             </p>
             <p> Pop Art is also a great tool for advertising your local event. Users are not required
-              to make an account unless they are an artist or an event host. Therefore, anyone can download Pop Art and browse 
+              to make an account unless they are an artist or an event host. Therefore, anyone can use Pop Art and browse 
               event postings to see what events are coming up in their area. Event postings will stay active until the event date
               has passed.
             </p>
