@@ -1,6 +1,7 @@
 import React from 'react';
 import PopArtContext from '../../context/PopArtContext';
-import * as moment from 'moment';
+import moment from 'moment'
+//import * as moment from 'moment';
 //import EventsApiService from '../../services/events-api-service';
 import RequestorsApiService from '../../services/requestors-api-service';
 import {Link} from 'react-router-dom';
