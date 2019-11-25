@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AuthApiService from '../../services/auth-api-service';
 import './RegisterPage.css';
+import TokenService from '../../services/token-service';
+import UsersApiService from '../../services/users-api-service';
+import PopArtContext from '../../context/PopArtContext';
 
 class RegisterPage extends React.Component {
   state = {
@@ -10,9 +13,23 @@ class RegisterPage extends React.Component {
     confirmedPassword: ''
   }
 
+  static contextType = PopArtContext;
+
   //   componentDidMount() {
   //     window.scrollTo(0, 0);
   // }
+
+  handleLoginSuccess = () => {
+    this.context.setLoggedIn();
+    this.context.setUserRequests();
+    this.context.getAllHostedEvents();
+    UsersApiService.getLoggedInUser()
+      .then(res => {
+        this.context.setLoggedInUser(res)
+      })
+      .catch((e) => this.context.setError(e));
+    this.props.history.push('/home');
+  }
 
   handleSubmit = ev => {
     ev.preventDefault();
@@ -30,10 +47,21 @@ class RegisterPage extends React.Component {
       password: password.value,
     })
       .then(user => {
-        username.value = '';
-        password.value = '';
-        password2.value = '';
-        this.props.history.push('/login')
+        AuthApiService.postLogin({
+          username: username.value,
+          password: password.value
+        })
+          .then(res => {
+            username.value = '';
+            password.value = '';
+            password2.value = '';
+            this.setState({
+              password: '',
+              confirmedPassword: ''
+            })
+            TokenService.saveAuthToken(res.authToken);
+            this.handleLoginSuccess();
+          })
       })
       .catch(res => {
         this.setState({ error: res.error })
@@ -41,40 +69,42 @@ class RegisterPage extends React.Component {
   }
 
   handlePasswordChange = (event) => {
-    this.setState({password: event.target.value})
+    this.setState({ error: null })
+    this.setState({ password: event.target.value })
   }
 
   handleSecondPasswordChange = (event) => {
-    this.setState({confirmedPassword: event.target.value})
+    this.setState({ error: null })
+    this.setState({ confirmedPassword: event.target.value })
   }
 
   lowerCaseTest = () => {
     const regex = /[a-z]/g;
-    if((this.state.password).match(regex)){
+    if ((this.state.password).match(regex)) {
       return true;
     }
-    }
+  }
 
-    upperCaseTest = () => {
-      const regex = /[A-Z]/g;
-      if((this.state.password).match(regex)){
-        return true;
-      }
-      }
-
-      digitTest = () => {
-        const regex = /\d/
-        if((this.state.password).match(regex)){
-          return true;
-        }
-        }
-        
-    specialCharacterTest = () => {
-      const regex = /\W|_/g
-        if((this.state.password).match(regex)){
-          return true;
-        }
+  upperCaseTest = () => {
+    const regex = /[A-Z]/g;
+    if ((this.state.password).match(regex)) {
+      return true;
     }
+  }
+
+  digitTest = () => {
+    const regex = /\d/
+    if ((this.state.password).match(regex)) {
+      return true;
+    }
+  }
+
+  specialCharacterTest = () => {
+    const regex = /\W|_/g
+    if ((this.state.password).match(regex)) {
+      return true;
+    }
+  }
 
 
   render() {
@@ -93,7 +123,7 @@ class RegisterPage extends React.Component {
             </div>
             <div>
               <label htmlFor="username">Username:</label>
-              <input placeholder="example: johnIsCool2001" type="text" name="username" id="username" required />
+              <input type="text" name="username" id="username" required />
             </div>
             <div>
               <label htmlFor="password">Password:</label>
@@ -101,15 +131,15 @@ class RegisterPage extends React.Component {
             </div>
             <div>
               <label htmlFor="password2">Confirm Password:</label>
-              <input value={this.state.confirmedPassword} onChange={(e) => this.handleSecondPasswordChange(e)} placeholder="must contain one number" type="password" name="password2" id="password2" required />
+              <input value={this.state.confirmedPassword} onChange={(e) => this.handleSecondPasswordChange(e)} type="password" name="password2" id="password2" required />
             </div>
             <div>
-              <p className={this.state.password.length > 7 && this.state.password.length < 73 ? 'green' : 'red'}>Password must be longer than 8 characters and shorter than 73 characters</p>
-              <p className={this.lowerCaseTest() ? 'green' : 'red'}>Password must contain at least 1 lowercase letter</p>
-              <p className={this.upperCaseTest() ? 'green' : 'red'}>Password must contain at least 1 uppercase letter</p>
-              <p className={this.digitTest() ? 'green' : 'red'}>Password must contain at least 1 number</p>
-              <p className={this.specialCharacterTest() ? 'green' : 'red'}>Password must contain at least one special character</p>
-              <p className={this.state.password === this.state.confirmedPassword && this.state.password !== '' ? 'green' : 'red'}>Passwords must match</p>
+              <p className={this.state.password.length > 7 && this.state.password.length < 73 ? 'green' : 'grey'}>Password must be longer than 8 characters and shorter than 73 characters</p>
+              <p className={this.lowerCaseTest() ? 'green' : 'grey'}>Password must contain at least 1 lowercase letter</p>
+              <p className={this.upperCaseTest() ? 'green' : 'grey'}>Password must contain at least 1 uppercase letter</p>
+              <p className={this.digitTest() ? 'green' : 'grey'}>Password must contain at least 1 number</p>
+              <p className={this.specialCharacterTest() ? 'green' : 'grey'}>Password must contain at least one special character</p>
+              <p className={this.state.password === this.state.confirmedPassword && this.state.password !== '' ? 'green' : 'grey'}>Passwords must match</p>
             </div>
             <button type="submit">Register</button>
             <div>

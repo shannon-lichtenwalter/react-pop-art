@@ -11,8 +11,8 @@ class CreateEventPage extends React.Component {
 
   handleSubmitNewEvent = event => {
     event.preventDefault();
-    this.setState({error: null})
-    const {name, date, time, location, city, state, slots_available, event_type, paid, description, additional_details, img_url } = event.target;
+    this.setState({ error: null })
+    const { name, date, time, location, city, state, slots_available, event_type, paid, description, additional_details, img_url } = event.target;
     const newEvent = {
       name: name.value,
       date: date.value,
@@ -30,33 +30,33 @@ class CreateEventPage extends React.Component {
 
     EventsApiService.postEvent(newEvent)
       .then(res => {
-          this.context.addEvent(res);
-          this.props.history.push('/home')
-        })
-      .then(()=> {
-      name.value= ''
-      date.value = ''
-      time.value= ''
-      location.value= ''
-      city.value = ''
-      state.value= ''
-      slots_available.value= ''
-      event_type.value= ''
-      paid.value= ''
-      description.value= ''
-      additional_details.value= ''
-      img_url.value= ''
+        this.context.addEvent(res);
+        this.props.history.push('/home')
+      })
+      .then(() => {
+        name.value = ''
+        date.value = ''
+        time.value = ''
+        location.value = ''
+        city.value = ''
+        state.value = ''
+        slots_available.value = ''
+        event_type.value = ''
+        paid.value = ''
+        description.value = ''
+        additional_details.value = ''
+        img_url.value = ''
       })
       .catch((e) => this.context.setError(e))
-    
+
   }
 
-  renderTodaysDate(){
+  renderTodaysDate() {
     const todaysDate = new Date();
     const year = todaysDate.getFullYear(); //YYYY
-    const month = ("0" + (todaysDate.getMonth() +1)).slice(-2); //MM
+    const month = ("0" + (todaysDate.getMonth() + 1)).slice(-2); //MM
     const day = ("0" + todaysDate.getDate()).slice(-2); //DD
-    const minDay = (year +"-"+ month +"-"+day); //"YYYY-MM-DD"
+    const minDay = (year + "-" + month + "-" + day); //"YYYY-MM-DD"
 
     return minDay;
   }
@@ -102,7 +102,61 @@ class CreateEventPage extends React.Component {
               </div>
               <div>
                 <label htmlFor="state">State</label>
-                <input type="text" name="state" id="state" required />
+                <select name="state" id="state" required>
+                  <option value=''>Choose a State</option>
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="DC">District Of Columbia</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
+                </select>
+
               </div>
               <div>
                 <label htmlFor="date">Date:</label>
@@ -140,12 +194,42 @@ class CreateEventPage extends React.Component {
               </div>
               <div>
                 <label htmlFor="details">Additional Details</label>
-                <textarea placeholder="arrival time, equipment available, contact info" name="additional_details" id="details"
-                  ></textarea>
+                <textarea placeholder="Optional: add more details" name="additional_details" id="details"
+                ></textarea>
               </div>
               <div>
-                <label htmlFor="eventPhoto">Upload photo for event?</label>
-                <input type="url" name="img_url" id="eventPhoto" />
+                <label htmlFor="eventPhoto">Choose Icon for Event Listing</label>
+                <select placeholder='Enter image URL' name="img_url" id="eventPhoto">
+                  <option value=''>Nonspecific Default Icon</option>
+                  <option value='https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'>
+                    Instruments Icon
+                  </option>
+                  <option value='https://images.unsplash.com/photo-1481886756534-97af88ccb438?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80'>
+                    Band Icon
+                  </option>
+                  <option value='https://images.unsplash.com/photo-1545518514-ce8448f542b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80'>
+                    Art Show Icon
+                  </option>
+                  <option value='https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'>
+                    Paintbrushes Icon
+                  </option>
+                  <option value='https://images.unsplash.com/photo-1474308371634-c715850e8d8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'>
+                    Dance Icon
+                  </option>
+                  <option value='https://images.unsplash.com/photo-1529590003495-b2646e2718bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=820&q=80'>
+                    Books Icon
+                  </option>
+                  <option value='https://images.unsplash.com/photo-1452860606245-08befc0ff44b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'>
+                    Crafts Icon
+                  </option>
+                  <option value='https://images.unsplash.com/photo-1473186505569-9c61870c11f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'>
+                    Poetry Icon
+                  </option>
+                  <option value='https://images.unsplash.com/photo-1536867520774-5b4f2628a69b?ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80'>
+                    Fashion Design Icon
+                  </option>
+                  
+                </select>
               </div>
               <button type="submit">Post Event</button>
             </fieldset>
