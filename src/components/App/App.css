@@ -1,3 +1,36 @@
 .red {
   color: red;
 }
+
+header {
+  margin-top:35px;
+  background-image: url("../../image-files/rotated-photo.jpg");
+  background-size: cover;
+  background-repeat:no-repeat;
+  height: 300px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+h1{
+  color:white;
+  font-size: 60px;
+  font-family: 'Bangers', cursive;
+}
+
+.badge {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-color:rgb(241, 182, 109, 0.9);
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+
+nav{
+  background-color: white;
+}
+

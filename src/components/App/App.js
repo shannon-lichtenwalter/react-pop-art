@@ -198,7 +198,10 @@ class App extends React.Component {
           </nav>
           <main className='App'>
             <header>
-              <h1>Pop Art</h1>
+              <div className='badge'>
+                <h1>Pop Art</h1>
+              </div>
+              
             </header>
             {this.state.error && <p className='red'>There was an error! Oh no!</p>}
             <ErrorBoundary>

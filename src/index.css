@@ -24,7 +24,7 @@ code {
 nav,
 footer {
   padding: 1% 0;
-  background-color: #aaa;
+  background-color: white;
 }
 
 nav {
@@ -42,7 +42,7 @@ header {
 section {
   min-height: 200px;
   padding: 6% 0;
-  background-color: #bbb;
+  background-color: white;
 }
 
 section:nth-child(even) {
