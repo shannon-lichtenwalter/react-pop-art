@@ -12,6 +12,10 @@ class HomePage extends React.Component {
 
   static contextType = PopArtContext;
 
+  handleReturnToTop = () => {
+    window.scrollTo(0, 0);
+  }
+
   componentDidMount() {
     this.context.clearError();
 
@@ -41,6 +45,7 @@ class HomePage extends React.Component {
         {this.context.events.map(event => {
           return <Event key={event.id} event={event} />
         })}
+        <button onClick={()=>this.handleReturnToTop()}>Return to Top of Page</button>
       </div>
     )
   }
