@@ -5,6 +5,7 @@ import moment from 'moment'
 //import EventsApiService from '../../services/events-api-service';
 import RequestorsApiService from '../../services/requestors-api-service';
 import {Link} from 'react-router-dom';
+import './EventPageDetails.css';
 
 class EventPageDetails extends React.Component{
   static contextType = PopArtContext;
@@ -45,7 +46,7 @@ class EventPageDetails extends React.Component{
     }
 
     return (
-      <button 
+      <button className={disabledStatus ? 'disabled-request-button' : 'request-button'}
       disabled={disabledStatus}
       onClick={() => this.handleRequestEvent()}>
         {buttonText}
@@ -61,19 +62,22 @@ class EventPageDetails extends React.Component{
     const event = this.props.event;
     return(
       <>
-      <Link to='/home'><button>Go Back</button></Link>
-      <h2>{event.name}</h2>
+      <h2 className='event-page-details-h2'>{event.name}</h2>
         <img src={!event.img_url ? 'https://images.unsplash.com/photo-1519145897500-869c40ccb024?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80' : event.img_url} alt='event' />
-        <h3>{moment(event.date).format('LL')} at {moment(event.time, 'HH:mm').format('LT')}</h3>
-        <h4>{event.location}, {event.city}, {event.state}</h4>
-        <h4>{event.slots_available === 1 ? event.slots_available + ' Artist Slot Available': event.slots_available + ' Artist Slots Available'}</h4>
-        {this.renderRequestToBookButton()}
-        <h4>Event Details</h4>
-        <p>Hosted by: {event.username}</p>
-        <p>Type of event: {event.event_type}</p>
-        <p>{event.paid ? 'Paid' : 'Unpaid'} event</p>
-        <p>{event.description}</p>
-        <p> {event.additional_details}</p>
+        
+        <h3 className='event-page-details-h3'>{moment(event.date).format('LL')} at {moment(event.time, 'HH:mm').format('LT')}</h3>
+        <h4 className='event-page-details-h4'>{event.location}, {event.city}, {event.state}</h4>
+        <h4 className='event-page-details-slots'>{event.slots_available === 1 ? event.slots_available + ' Artist Slot Available': event.slots_available + ' Artist Slots Available'}</h4>
+        <div>{this.renderRequestToBookButton()}</div>
+        <h4 className='event-page-details-h4 details'>Event Details</h4>
+        <div className='event-page-details-p'>
+          <p>Hosted by: {event.username}</p>
+          <p>Type of event: {event.event_type}</p>
+          <p>Compensation: {event.paid ? 'Paid' : 'Unpaid'} event</p>
+          <p>{event.description ? 'Event Description: ' + event.description : ''}</p>
+          <p> {event.additional_details ? 'Additional Details: ' + event.additional_details : ''}</p>
+        </div>
+        <Link to='/home'><button className='go-back-button'>Go Back</button></Link>
       </>
     )
   }

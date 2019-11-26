@@ -4,7 +4,7 @@ import PopArtContext from '../../context/PopArtContext';
 import EventsApiService from '../../services/events-api-service';
 //import RequestorsApiService from '../../services/requestors-api-service';
 import EventPageDetails from '../EventPageDetails/EventPageDetails';
-
+import './EventPage.css';
 class EventPage extends React.Component {
   state = {
     event: null
@@ -30,7 +30,7 @@ class EventPage extends React.Component {
 
     return (
     <>
-      <section>
+      <section className='event-page-details-section'>
         {event && this.context.currentUser && <EventPageDetails event={this.state.event[0]}/>}
       
       

@@ -89,19 +89,19 @@ class CreateEventPage extends React.Component {
               </div>
               <div>
                 <label className='create-event-label' htmlFor="eventName">Event Name<span className='required-field'>*</span></label>
-                <input type="text" name="name" id="eventName" required />
+                <input className='create-event-input' type="text" name="name" id="eventName" required />
               </div>
               <div>
                 <label className='create-event-label' htmlFor="venueName">Venue Name<span className='required-field'>*</span></label>
-                <input type="text" name="location" id="venueName" required />
+                <input className='create-event-input' type="text" name="location" id="venueName" required />
               </div>
               <div>
                 <label className='create-event-label' htmlFor="city">City<span className='required-field'>*</span></label>
-                <input type="text" name="city" id="city" required />
+                <input className='create-event-input' type="text" name="city" id="city" required />
               </div>
               <div>
                 <label className='create-event-label' htmlFor="state">State<span className='required-field'>*</span></label>
-                <select name="state" id="state" required>
+                <select className='create-event-input' name="state" id="state" required>
                   <option value=''></option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
@@ -159,14 +159,14 @@ class CreateEventPage extends React.Component {
               </div>
               <div>
                 <label className='create-event-label' htmlFor="date">Date<span className='required-field'>*</span></label>
-                <input placeholder="MM/DD/YYYY" type="date" min={this.renderTodaysDate()} name="date" id="date" required />
+                <input className='create-event-input' placeholder="MM/DD/YYYY" type="date" min={this.renderTodaysDate()} name="date" id="date" required />
               </div>
               <div>
                 <label className='create-event-label' htmlFor="time">Time<span className='required-field'>*</span></label>
-                <input placeholder="example: 6:00pm" type="time" name="time" id="time" required />
+                <input className='create-event-input' placeholder="example: 6:00pm" type="time" name="time" id="time" required />
               </div>
               <label className='create-event-label' htmlFor="eventType">Type of Event</label>
-              <select name="event_type" id="eventType">
+              <select className='create-event-input' name="event_type" id="eventType">
                 <option value='Other'></option>
                 <option>Music Performance</option>
                 <option>Art Show</option>
@@ -179,27 +179,29 @@ class CreateEventPage extends React.Component {
               </select>
               <div>
                 <label className='create-event-label' htmlFor="description">Description</label>
-                <textarea rows='1' name="description" id="description"></textarea>
+                <textarea className='create-event-input' rows='1' name="description" id="description"></textarea>
               </div>
               <div>
                 <label className='create-event-label' htmlFor="slotsAvailable">Artist Slots Available<span className='required-field'>*</span></label>
-                <input type="number" min="0" name="slots_available" id="slotsAvailable" required />
+                <input className='create-event-input' type="number" min="0" name="slots_available" id="slotsAvailable" required />
               </div>
               <div>
                 <label className='create-event-label' htmlFor="paidEvent">Are you offerring to pay the artist(s) for this event?</label>
-                <select name="paid" id="paidEvent">
+                <select className='create-event-input' name="paid" id="paidEvent">
+                  <option value='false'></option>
                   <option value='false'>No</option>
                   <option value='true'>Yes</option>
                 </select>
               </div>
               <div>
                 <label className='create-event-label' htmlFor="details">Additional Details</label>
-                <textarea rows='1' name="additional_details" id="details"
+                <textarea className='create-event-input' rows='1' name="additional_details" id="details"
                 ></textarea>
               </div>
               <div>
                 <label className='create-event-label' htmlFor="eventPhoto">Choose Icon</label>
-                <select placeholder='Enter image URL' name="img_url" id="eventPhoto">
+                <select className='create-event-input' name="img_url" id="eventPhoto">
+                  <option value=''></option>
                   <option value=''>Nonspecific Default Icon</option>
                   <option value='https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'>
                     Instruments Icon

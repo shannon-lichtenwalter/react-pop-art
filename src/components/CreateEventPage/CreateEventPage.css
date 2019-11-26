@@ -7,6 +7,12 @@
   text-align: left;
 }
 
+.create-event-input {
+  height: 25px;
+  margin: 2px;
+  border: 1px solid lightgrey;
+}
+
 .create-event-form-section {
   width: 90%;
   margin-top: 50px;
