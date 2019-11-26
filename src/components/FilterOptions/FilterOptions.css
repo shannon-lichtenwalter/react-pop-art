@@ -27,6 +27,7 @@ input {
   margin-right: 2px;
   border: none;
   font-size: 1.2rem;
+  height: 50px;
 }
 
 .filter-button:hover, .filter-button:active {

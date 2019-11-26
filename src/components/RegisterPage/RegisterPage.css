@@ -34,6 +34,7 @@
   margin-right: 2px;
   border: none;
   font-size: 1.4rem;
+  height: 50px;
 }
 
 .register-button:hover, .register-button:active{

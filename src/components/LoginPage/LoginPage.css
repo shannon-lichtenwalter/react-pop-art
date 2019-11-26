@@ -27,6 +27,7 @@
   margin-right: 2px;
   border: none;
   font-size: 1.4rem;
+  height: 50px;
 }
 
 .login-button:hover, .login-button:active{
