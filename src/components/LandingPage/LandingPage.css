@@ -10,7 +10,7 @@
   font-size: 1.4rem;
 }
 
-.proceed-button:hover{
+.proceed-button:hover, .proceed-button:active{
   color: #F2B56B;
 }
 

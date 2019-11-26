@@ -36,7 +36,7 @@
   font-size: 1.4rem;
 }
 
-.register-button:hover{
+.register-button:hover, .register-button:active{
   color: #F2B56B;
 }
 
@@ -47,7 +47,7 @@
   margin: 3px;
 }
 
-.options-links > a:hover {
+.options-links > a:hover, .options-links > a:active {
   color: #A61C29;
 }
 

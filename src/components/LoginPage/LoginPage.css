@@ -29,7 +29,7 @@
   font-size: 1.4rem;
 }
 
-.login-button:hover{
+.login-button:hover, .login-button:active{
   color: #F2B56B;
 }
 
@@ -38,7 +38,7 @@
   font-size: 0.8rem;
 }
 
-.register-link > a:hover {
+.register-link > a:hover, .register-link > a:active {
   color: #A61C29;
 }
 

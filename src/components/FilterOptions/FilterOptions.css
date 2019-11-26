@@ -29,7 +29,7 @@ input {
   font-size: 1.2rem;
 }
 
-.filter-button:hover {
+.filter-button:hover, .filter-button:active {
   color: #F2B56B;
 }
 

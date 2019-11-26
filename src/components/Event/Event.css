@@ -27,7 +27,7 @@ h2 {
   font-size: 1.4rem;
 }
 
-.view-event-details-button:hover{
+.view-event-details-button:hover, .view-event-details-button:active {
   color: #F2B56B;
 }
 

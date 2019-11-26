@@ -10,7 +10,7 @@
   font-size: 1.4rem;
 }
 
-.homepage-buttons:hover, .return-to-top-button:hover {
+.homepage-buttons:hover, .return-to-top-button:hover, .homepage-buttons:active, .return-to-top-button:active {
   color: #F2B56B;
 }
 

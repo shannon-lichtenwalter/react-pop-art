@@ -36,7 +36,7 @@ select {
   font-size: 1.4rem;
 }
 
-.create-event-button:hover{
+.create-event-button:hover, .create-event-button:active{
   color: #F2B56B;
 }
 
