@@ -111,40 +111,40 @@ class RegisterPage extends React.Component {
 
     const { error } = this.state;
     return (
-      <section>
+      <section className='sign-up-form'>
         <form
           className="sign-up-form"
           onSubmit={this.handleSubmit}>
 
-          <fieldset name="userName-password">
-            <legend>Sign Up for Pop Art</legend>
+          <fieldset className= 'sign-up-fields' name="userName-password">
+            <legend>Sign Up for <span className='app-name'>Pop Art</span></legend>
             <div role='alert'>
               {error && <p className='red'>{error}</p>}
             </div>
-            <div>
-              <label htmlFor="username">Username:</label>
+            <div className='inputs'>
+              <label className='username-label' htmlFor="username">Username:</label>
               <input type="text" name="username" id="username" required />
             </div>
-            <div>
-              <label htmlFor="password">Password:</label>
+            <div className='inputs'>
+              <label className='password-label' htmlFor="password">Password:</label>
               <input value={this.state.password} onChange={(e) => this.handlePasswordChange(e)} type="password" name="password" id="password" required />
             </div>
-            <div>
-              <label htmlFor="password2">Confirm Password:</label>
+            <div className='inputs'>
+              <label className='password-label' htmlFor="password2">Confirm Password:</label>
               <input value={this.state.confirmedPassword} onChange={(e) => this.handleSecondPasswordChange(e)} type="password" name="password2" id="password2" required />
             </div>
-            <div>
-              <p className={this.state.password.length > 7 && this.state.password.length < 73 ? 'green' : 'grey'}>Password must be longer than 8 characters and shorter than 73 characters</p>
+            <div className='password-requirements'>
+              <p className={this.state.password.length > 7 && this.state.password.length < 73 ? 'green' : 'grey'}>Password must be longer than 8 and shorter than 73 characters</p>
               <p className={this.lowerCaseTest() ? 'green' : 'grey'}>Password must contain at least 1 lowercase letter</p>
               <p className={this.upperCaseTest() ? 'green' : 'grey'}>Password must contain at least 1 uppercase letter</p>
               <p className={this.digitTest() ? 'green' : 'grey'}>Password must contain at least 1 number</p>
               <p className={this.specialCharacterTest() ? 'green' : 'grey'}>Password must contain at least one special character</p>
               <p className={this.state.password === this.state.confirmedPassword && this.state.password !== '' ? 'green' : 'grey'}>Passwords must match</p>
             </div>
-            <button type="submit">Register</button>
-            <div>
+            <button className='register-button' type="submit">Register</button>
+            <div className='options-links'>
               <Link to='/login'>Already have an account?</Link>
-              <Link to='/home'>Proceed to Pop Art without signing in</Link>
+              <Link to='/home'>Proceed to Pop Art without signing in...</Link>
             </div>
           </fieldset>
         </form>

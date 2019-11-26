@@ -4,6 +4,7 @@ import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
 import PopArtContext from '../../context/PopArtContext';
 import UsersApiService from '../../services/users-api-service';
+import './LoginPage.css';
 
 class LoginPage extends React.Component {
   state = {
@@ -50,25 +51,25 @@ class LoginPage extends React.Component {
   render() {
     const { error } = this.state;
     return (
-      <section>
+      <section className='login-form'>
         <form
           className="sign-in-form"
           onSubmit={this.handleSubmitJwtAuth}>
-          <fieldset name="userName-password">
-            <legend>Log in to Pop Art</legend>
+          <fieldset className='login-fields' name="userName-password">
+            <legend>Login to <span className='app-name'>Pop Art</span></legend>
             <div role='alert'>
               {error && <p className='red'>{error}</p>}
             </div>
             <div>
-              <label htmlFor="username">Username:</label>
+              <label className='username-label' htmlFor="username">Username:</label>
               <input type="text" name="username" id="username" required />
             </div>
             <div>
-              <label htmlFor="password">Password:</label>
+              <label className='password-label' htmlFor="password">Password:</label>
               <input type="password" name="password" id="password" required />
             </div>
-            <button type="submit">Login</button>
-            <div>
+            <button className='login-button' type="submit">Login</button>
+            <div className='register-link'>
               <Link to='/register'>Create An Account?</Link>
             </div>
           </fieldset>

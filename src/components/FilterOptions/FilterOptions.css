@@ -18,13 +18,14 @@ input {
 }
 
 .filter-button{
-  color:  #2CC7D9;
+  color: #D9486E;
   font-family: 'Bangers', cursive;
   font-size: 1.1rem;
   background-color: transparent;
   margin-top: 4px;
   margin-left: 2px;
   margin-right: 2px;
+  border: none;
 }
 
 .filter-button:hover {

@@ -6,6 +6,7 @@
   background-color: transparent;
   margin-left: 2px;
   margin-right: 2px;
+  border: none;
 }
 
 .homepage-buttons:hover, .return-to-top-button:hover {

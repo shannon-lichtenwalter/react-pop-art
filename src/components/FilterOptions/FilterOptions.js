@@ -80,7 +80,7 @@ render() {
 
         <div role='alert'>
           {this.state.error && <p className='red'>{this.state.error}</p>}
-          {this.state.message && <p className='green'>{this.state.message}</p>}
+          {this.state.message && <p>{this.state.message}</p>}
         </div>
       </fieldset>
     </form>
