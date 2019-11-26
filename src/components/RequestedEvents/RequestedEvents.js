@@ -1,14 +1,22 @@
 import React from 'react';
 import * as moment from 'moment';
 import PopArtContext from '../../context/PopArtContext';
+import './RequestedEvents.css';
 
 class RequestedEvents extends React.Component{
   static contextType = PopArtContext;
 
 requestedEvents = () => {
-      return this.context.userRequests.map(request => {
+      return this.context.userRequests.map((request, index) => {
         return (
-          <li key={request.event_id}>{request.name} on {moment(request.date).format('LL')} at {moment(request.time, 'HH:mm').format('LT')} :: {request.booking_status} </li>
+          <li key={index}><span className='event-name'>{request.name}</span>
+            <ul className='request-details'>
+              <li>Date: {moment(request.date).format('LL')}</li>
+              <li>Time: {moment(request.time, 'HH:mm').format('LT')} </li>
+              <li className= {request.booking_status === 'Pending' ? 'pending-status' : request.booking_status === 'Accepted' ? 'accepted-status' : 'denied-status'} 
+              >Status : {request.booking_status}</li>
+            </ul> 
+          </li>
         )
     });
   }
@@ -16,7 +24,7 @@ requestedEvents = () => {
 
   render(){  
     return(
-      <ul>{this.requestedEvents()}</ul>
+      <ul className='requested-events'>{this.requestedEvents()}</ul>
     )
   }
 }

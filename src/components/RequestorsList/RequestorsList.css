@@ -1,0 +1,43 @@
+.hosted-event-requestors {
+  list-style: none;
+  padding:0px;
+}
+
+.booking-options {
+  list-style: none;
+  padding:0px;
+}
+
+/* .requestor-username {
+  font-weight:bold;
+} */
+
+.requestor-details {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.new-requestor-below {
+  border-top: 1px solid lightgrey;
+  width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.accept-button, .deny-button {
+  color: #D9486E;
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  background-color: transparent;
+  margin-top: 0px;
+  margin-left: 2px;
+  margin-right: 20px;
+  padding:0px;
+  text-align:left;
+  border: none;
+  height: 40px;
+}
+
+.accept-button:hover, .deny-button:hover, .accept-button:active, .deny-button:active {
+  color: #F2B56B;
+}

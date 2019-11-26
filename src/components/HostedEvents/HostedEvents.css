@@ -1,3 +1,38 @@
-.event > li {
-  border: 1px solid black
+.hosted-events {
+  width: 90%;
+  margin-left:auto;
+  margin-right: auto;
+  padding:0px;
+  text-align: left;
+  font-size: 1rem;
+  list-style:none;
+}
+
+.hosted-events > li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.hosted-event-details {
+    list-style: none;
+    padding:0px;
+}
+
+.cancel-event-button{
+  color: grey;
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  background-color: transparent;
+  margin-top: 0px;;
+  margin-left: 0px;
+  margin-right: 0px;
+  border: none;
+  font-size: 1.2rem;
+  padding-bottom:30px;
+  text-align: left;
+  padding: 0px;
+}
+
+.cancel-event-button:hover, .cancel-event-button:active {
+  color: #F2B56B;
 }

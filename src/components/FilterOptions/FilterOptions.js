@@ -48,6 +48,16 @@ class FilterOptions extends React.Component {
       .catch((e) => this.context.setError(e));
   }
 
+  renderTodaysDate() {
+    const todaysDate = new Date();
+    const year = todaysDate.getFullYear(); //YYYY
+    const month = ("0" + (todaysDate.getMonth() + 1)).slice(-2); //MM
+    const day = ("0" + todaysDate.getDate()).slice(-2); //DD
+    const minDay = (year + "-" + month + "-" + day); //"YYYY-MM-DD"
+
+    return minDay;
+  }
+
 render() {
   return (
     <form className="filterEvents" onSubmit={this.handleFilterSubmit}>
@@ -73,7 +83,7 @@ render() {
         </div>
         <div>
           <label htmlFor="filterDate">Date of Event</label>
-          <input placeholder="MM/DD/YYYY" type="date" name="date" id="filterDate" />
+          <input min={this.renderTodaysDate()}  type="date" name="date" id="filterDate" />
         </div>
         <button onClick={()=>this.handleViewAllEvents()} className='filter-button' type="reset">View All Events</button>
         <button className='filter-button' type="submit">Filter Events</button>
