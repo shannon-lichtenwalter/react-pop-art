@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './LandingPage.css';
 
 class LandingPage extends React.Component{
   componentDidMount() {
@@ -7,7 +8,7 @@ class LandingPage extends React.Component{
 }
   render(){
     return(
-      <section>
+      <section className='landing-page'>
           <p>Welcome to Pop Art, the interactive application 
             that allows you to be your own booking agent.</p>
             <p>Pop Art is revolutionizing the booking process for events in your local
@@ -28,7 +29,7 @@ class LandingPage extends React.Component{
               has passed.
             </p>
             <p>Ready to be part of local pop up art events in your community?</p>
-            <Link to='/home'><button>Proceed to Pop Art!</button></Link>
+            <Link to='/home'><button className='proceed-button'>Proceed to Pop Art!</button></Link>
         </section>
     )
   }

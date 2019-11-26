@@ -1,6 +1,7 @@
 import React from 'react';
 import EventsApiService from '../../services/events-api-service';
 import PopArtContext from '../../context/PopArtContext';
+import './CreateEventPage.css';
 
 class CreateEventPage extends React.Component {
   state = {
@@ -67,43 +68,41 @@ class CreateEventPage extends React.Component {
     const { error } = this.state;
     return (
       <div>
-        <section>
+        <section className='before-create-event'>
           <h2>Before you post...</h2>
           <p>Before creating an event, please note that it is your responsibility
-            as the event host to make sure that your event is safe for your event guests.
-            It is the event host's responsibility to be sure that the event site and facilities
-            are appropriate for the event type. Pop Art is not responsible for the outcome of any events.
+            as the event host to make sure that your event is safe for your event guests and artists.
+            It is the event host's responsibility to ensure that the event site and facilities
+            are appropriate for the event type. Pop Art is not responsible for the outcome of any events. 
+            Pop Art is not responsible for arranging payments between hosts and artists.
         </p>
-          <p>
-            Also, if you must cancel your event, it is your responsibility to contact the booked artists by e-mail
-            to notify them of the event cancellation. Pop Art is not responsible for arranging any transactions or
-            payments between any artist and host.
-        </p>
+
         </section>
-        <section>
+        <section className='create-event-form-section'>
           <h2> Create an Event</h2>
           <form className="create-event-form" onSubmit={this.handleSubmitNewEvent}>
-            <fieldset name="userName-password">
-              <legend>Submit Event Details</legend>
+            <fieldset name="userName-password" className='create-event-fields'>
+              <legend className='create-event-legend'>Submit Event Details</legend>
+              
               <div role='alert'>
                 {error && <p className='red'>{error}</p>}
               </div>
               <div>
-                <label htmlFor="eventName">Event Name:</label>
+                <label className='create-event-label' htmlFor="eventName">Event Name<span className='required-field'>*</span></label>
                 <input type="text" name="name" id="eventName" required />
               </div>
               <div>
-                <label htmlFor="venueName">Venue Name:</label>
+                <label className='create-event-label' htmlFor="venueName">Venue Name<span className='required-field'>*</span></label>
                 <input type="text" name="location" id="venueName" required />
               </div>
               <div>
-                <label htmlFor="city">City</label>
+                <label className='create-event-label' htmlFor="city">City<span className='required-field'>*</span></label>
                 <input type="text" name="city" id="city" required />
               </div>
               <div>
-                <label htmlFor="state">State</label>
+                <label className='create-event-label' htmlFor="state">State<span className='required-field'>*</span></label>
                 <select name="state" id="state" required>
-                  <option value=''>Choose a State</option>
+                  <option value=''></option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
                   <option value="AZ">Arizona</option>
@@ -159,15 +158,16 @@ class CreateEventPage extends React.Component {
 
               </div>
               <div>
-                <label htmlFor="date">Date:</label>
+                <label className='create-event-label' htmlFor="date">Date<span className='required-field'>*</span></label>
                 <input placeholder="MM/DD/YYYY" type="date" min={this.renderTodaysDate()} name="date" id="date" required />
               </div>
               <div>
-                <label htmlFor="time">Time:</label>
+                <label className='create-event-label' htmlFor="time">Time<span className='required-field'>*</span></label>
                 <input placeholder="example: 6:00pm" type="time" name="time" id="time" required />
               </div>
-              <label htmlFor="eventType">Type of Event</label>
+              <label className='create-event-label' htmlFor="eventType">Type of Event</label>
               <select name="event_type" id="eventType">
+                <option value='Other'></option>
                 <option>Music Performance</option>
                 <option>Art Show</option>
                 <option>Dance Performance</option>
@@ -178,27 +178,27 @@ class CreateEventPage extends React.Component {
                 <option>Other</option>
               </select>
               <div>
-                <label htmlFor="description">Description</label>
-                <textarea name="description" id="description"></textarea>
+                <label className='create-event-label' htmlFor="description">Description</label>
+                <textarea rows='1' name="description" id="description"></textarea>
               </div>
               <div>
-                <label htmlFor="slotsAvailable">Artist Slots Available</label>
+                <label className='create-event-label' htmlFor="slotsAvailable">Artist Slots Available<span className='required-field'>*</span></label>
                 <input type="number" min="0" name="slots_available" id="slotsAvailable" required />
               </div>
               <div>
-                <label htmlFor="paidEvent">Are you offerring to pay the artist(s) for this event?</label>
+                <label className='create-event-label' htmlFor="paidEvent">Are you offerring to pay the artist(s) for this event?</label>
                 <select name="paid" id="paidEvent">
                   <option value='false'>No</option>
                   <option value='true'>Yes</option>
                 </select>
               </div>
               <div>
-                <label htmlFor="details">Additional Details</label>
-                <textarea placeholder="Optional: add more details" name="additional_details" id="details"
+                <label className='create-event-label' htmlFor="details">Additional Details</label>
+                <textarea rows='1' name="additional_details" id="details"
                 ></textarea>
               </div>
               <div>
-                <label htmlFor="eventPhoto">Choose Icon for Event Listing</label>
+                <label className='create-event-label' htmlFor="eventPhoto">Choose Icon</label>
                 <select placeholder='Enter image URL' name="img_url" id="eventPhoto">
                   <option value=''>Nonspecific Default Icon</option>
                   <option value='https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'>
@@ -231,7 +231,10 @@ class CreateEventPage extends React.Component {
                   
                 </select>
               </div>
-              <button type="submit">Post Event</button>
+              <div className='submit-create-event-form'>
+              <p className='required-field-p'> <span className='required-field'>*</span>required-field</p>
+              <button className='create-event-button' type="submit">Post Event</button>
+              </div>
             </fieldset>
           </form>
         </section>

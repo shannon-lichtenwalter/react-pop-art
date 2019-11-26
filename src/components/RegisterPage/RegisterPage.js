@@ -113,7 +113,6 @@ class RegisterPage extends React.Component {
     return (
       <section className='sign-up-form'>
         <form
-          className="sign-up-form"
           onSubmit={this.handleSubmit}>
 
           <fieldset className= 'sign-up-fields' name="userName-password">
