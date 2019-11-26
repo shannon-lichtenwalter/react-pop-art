@@ -23,6 +23,7 @@ h2 {
   font-size: 1.1rem;
   background-color: transparent;
   margin-top: 8px;
+  border:none;
 }
 
 .view-event-details-button:hover{

@@ -22,7 +22,7 @@ class HomePage extends React.Component {
     this.context.clearError();
 
     this.context.removeFilterFromEvents();
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 
     // EventsApiService.getEvents()
     //   .then(res => {

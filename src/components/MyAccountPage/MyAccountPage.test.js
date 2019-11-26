@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import renderer from 'react-test-renderer';
 import MyAccountPage from './MyAccountPage';
-import {BrowserRouter} from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
+import PopArtContext from '../../context/PopArtContext';
 
-describe.skip('MyAccountPage component', () => {
+describe('MyAccountPage component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<BrowserRouter><MyAccountPage /></BrowserRouter>, div);
+    ReactDOM.render(<MemoryRouter><PopArtContext.Provider value={{clearError:jest.fn()}}><MyAccountPage /></PopArtContext.Provider></MemoryRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })

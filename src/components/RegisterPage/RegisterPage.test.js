@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import renderer from 'react-test-renderer';
 import RegisterPage from './RegisterPage';
-import {BrowserRouter} from 'react-router-dom';
+import {MemoryRouter} from 'react-router-dom';
+
+beforeAll(() => {
+  window.scrollTo = jest.fn();
+})
 
 describe('RegisterPage component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<BrowserRouter><RegisterPage /></BrowserRouter>, div);
+    ReactDOM.render(<MemoryRouter><RegisterPage /></MemoryRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })

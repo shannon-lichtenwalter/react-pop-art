@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import renderer from 'react-test-renderer';
 import RequestedEvents from './RequestedEvents';
-import {BrowserRouter} from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
+import PopArtContext from '../../context/PopArtContext';
 
-describe.skip('RequestedEvents component', () => {
+describe('RequestedEvents component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<BrowserRouter><RequestedEvents /></BrowserRouter>, div);
+    ReactDOM.render(<MemoryRouter><PopArtContext.Provider value={{userRequests:[]}}><RequestedEvents /></PopArtContext.Provider></MemoryRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })

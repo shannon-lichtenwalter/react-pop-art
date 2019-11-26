@@ -15,9 +15,9 @@ class RegisterPage extends React.Component {
 
   static contextType = PopArtContext;
 
-  //   componentDidMount() {
-  //     window.scrollTo(0, 0);
-  // }
+    componentDidMount() {
+      window.scrollTo(0, 0);
+  }
 
   handleLoginSuccess = () => {
     this.context.setLoggedIn();

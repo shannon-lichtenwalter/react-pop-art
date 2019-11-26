@@ -1,23 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-//import config from '../../config';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('App test', () => {
 
-  // beforeEach(() => {
-  //   jest.spyOn(window.location, 'assign').mockImplementation(l => {
-  //     expect(l).toEqual(config.API_ENDPOINT);
-  //   });
-
-  //   window.location.assign.mockClear();
-  // });
+  beforeAll(() => {
+    window.scrollTo = jest.fn();
+  })
 
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, div);
+    ReactDOM.render(<MemoryRouter><App /></MemoryRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })
