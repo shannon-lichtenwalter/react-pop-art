@@ -41,6 +41,7 @@ class Nav extends React.Component {
     return (
       <ul className='navigationLinks'>
         <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/'>About</Link></li>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLinks()
           : this.renderLoginLinks()}

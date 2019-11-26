@@ -199,7 +199,7 @@ class App extends React.Component {
           <main className='App'>
             <header>
               <div className='badge'>
-                <h1>Pop Art</h1>
+                <Link to='/home'><h1 className='mainLogo'>Pop Art</h1></Link>
               </div>
               
             </header>
@@ -217,9 +217,9 @@ class App extends React.Component {
               </Switch>
             </ErrorBoundary>
           </main>
-          <footer>
+          {/* <footer>
             <p> to return to landing page click <Link to='/'>Here</Link></p>
-          </footer>
+          </footer> */}
         </div>
       </PopArtContext.Provider>
     );

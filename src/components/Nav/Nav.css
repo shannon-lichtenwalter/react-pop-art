@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   margin:0;
-  padding:0;
+  padding:0; 
 }
 
 .navigationLinks > li {
@@ -11,3 +11,16 @@
   margin-right: 5px;
 }
 
+a {
+  color: #2CC7D9;
+  text-decoration: none;
+}
+
+a:visited {
+  color:  #2CC7D9;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #F2B56B;
+}

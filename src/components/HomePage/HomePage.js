@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import FilterOptions from '../FilterOptions/FilterOptions';
 import Event from '../Event/Event';
 import PopArtContext from '../../context/PopArtContext';
+import './HomePage.css';
 
 class HomePage extends React.Component {
   state = {
@@ -15,6 +16,7 @@ class HomePage extends React.Component {
   handleReturnToTop = () => {
     window.scrollTo(0, 0);
   }
+
 
   componentDidMount() {
     this.context.clearError();
@@ -31,21 +33,20 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className='homePage'>
-        <section>
+        <section className='filterSection'>
           <Link to='/create-event'>
-            <button>Create New Event</button>
+            <button className='homepage-buttons'>Create New Event</button>
           </Link>
-          <button
+          <button className='homepage-buttons'
             onClick={() => this.setState({ filteringResults: !this.state.filteringResults })}
           >Filter Event Results
         </button>
           {this.state.filteringResults && <FilterOptions />}
         </section>
-
         {this.context.events.map(event => {
           return <Event key={event.id} event={event} />
         })}
-        <button onClick={()=>this.handleReturnToTop()}>Return to Top of Page</button>
+        <button className='return-to-top-button' onClick={()=>this.handleReturnToTop()}>Return to Top of Page</button>
       </div>
     )
   }

@@ -32,5 +32,10 @@ h1{
 
 nav{
   background-color: white;
+  font-family: 'Bangers', cursive;
+}
+
+.mainLogo:hover {
+  color: #A61F2B
 }
 

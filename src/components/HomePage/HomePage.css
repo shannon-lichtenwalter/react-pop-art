@@ -1,0 +1,17 @@
+.homepage-buttons, .return-to-top-button {
+  margin-top: 10px;
+  color:  #2CC7D9;
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  background-color: transparent;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.homepage-buttons:hover, .return-to-top-button:hover {
+  color: #F2B56B;
+}
+
+.return-to-top-button {
+  margin: 30px;
+}
