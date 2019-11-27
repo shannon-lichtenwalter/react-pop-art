@@ -11,7 +11,7 @@ requestedEvents = () => {
         return (
           <li key={index}><div className='event-name-header'><span className='event-name'>{request.name}</span></div>
             <ul className='request-details'>
-              <li>Date: {moment(request.date).format('LL')}</li>
+              <li>Date: {moment.utc(request.date).format('LL')}</li>
               <li>Time: {moment(request.time, 'HH:mm').format('LT')} </li>
               <li className= {request.booking_status === 'Pending' ? 'pending-status' : request.booking_status === 'Accepted' ? 'accepted-status' : 'denied-status'} 
               >Status : {request.booking_status}</li>

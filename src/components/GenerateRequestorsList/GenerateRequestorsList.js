@@ -28,7 +28,7 @@ class GenerateRequestorsList extends React.Component {
         <span>{event.name}</span>
       </li>
         <ul className='hosted-event-details'>
-          <li>Date: {moment((event.date).toLocaleString()).format('LL')}</li>
+          <li>Date: {moment.utc(event.date).format('LL')}</li>
           <li>Time: {moment(event.time, 'HH:mm').format('LT')} </li>
           <li>Available Artist Slots: {event.slots_available}</li>
           
