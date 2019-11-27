@@ -1,71 +1,31 @@
 
 ## Pop Art 
+<img src='./src/screenshots/logo.png' height='100' width='200'/>
 See It Live: https://pop-art.now.sh/
 Created by Shannon Lichtenwalter
-<img src='./src/screenshots/logo.png' height='100' width='200'/>
 
+### What is Pop Art?
+Pop are is an interactive application that was created to make booking talented artists for events easier and simplified. Event hosts are able to create event pages which serve a dual purpose of: 
+1. Advertising the local event to the community
+2. Making artists aware of opportunities for events that they could book. 
+
+This application can be used by local bands, coffee shops, bars, artists, event hosts and creators of all types to help making booking easier for local artists. 
+
+Without an account, a user can navigate to the website and browse upcoming events on the homepage. They can filter events by type, date, and location.
+
+By creating an account, a user then has the ability to create events that they are hosting, or they can request to book events if they feel they would be a good fit for the event. 
+
+By hosting an event, the user can specify how many artists they need for said event. The user will then receive requests from artists to book the event. The user can accept or deny the artist's request. 
+<img src='./src/screenshots/EventPageImage.png' height='200' width='100'>
+<img src='./src/screenshots/BookingRequests.png' height='200' width='100'>
+<img src='./src/screenshots/HostedEvents.png' height='200' width='100'>
 
 ### Tech Stack
 
 This application was built using React, Javascript, Html, and CSS. It is intended to interact with the Pop Art Express Server that was built with Node, Express, and PostgreSQL.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### The API
+The api stores data about users of Pop Art and the events the create and request to book. The api requires authorization to access most endpoints with the exception of 
+getting a list of all upcoming events. 
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
