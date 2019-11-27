@@ -28,6 +28,9 @@ class LandingPage extends React.Component{
               event postings to see what events are coming up in their area. Event postings will stay active until the event date
               has passed.
             </p>
+            <p>Feel free to demo this application by signing up with a new username and password. Alternatively you may demo with 
+              username: janeDoe and password: password
+            </p>
             <p>Ready to be part of local pop up art events in your community?</p>
             <Link to='/home'><button className='proceed-button'>Proceed to Pop Art!</button></Link>
         </section>

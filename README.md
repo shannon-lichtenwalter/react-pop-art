@@ -1,10 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Pop Art 
+See It Live: https://pop-art.now.sh/
+Created by Shannon Lichtenwalter
+<img src='./src/screenshots/logo.png'/>
 
-In the project directory, you can run:
 
-### `npm start`
+### Tech Stack
+
+This application was built using React, Javascript, Html, and CSS. It is intended to interact with the Pop Art Express Server that was built with Node, Express, and PostgreSQL.
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
