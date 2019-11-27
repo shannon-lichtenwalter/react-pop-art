@@ -18,7 +18,11 @@
     padding:0px;
 }
 
-.cancel-event-button{
+.event-name {
+  margin-top: 8px;
+}
+
+/* .cancel-event-button{
   color: grey;
   font-family: 'Bangers', cursive;
   font-size: 1.1rem;
@@ -31,8 +35,30 @@
   padding-bottom:30px;
   text-align: left;
   padding: 0px;
+} */
+
+/* .cancel-event-button:hover, .cancel-event-button:active {
+  color: #F2B56B;
+} */
+
+.manage-event-button, .cancel-event-button {
+  /* height: 30px; */
+  font-size: 0.9rem;
+  background-color:transparent;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  border-radius: 2px;
+  color: grey;
+  font-weight: bold;
 }
 
-.cancel-event-button:hover, .cancel-event-button:active {
-  color: #F2B56B;
+.manage-event-button:hover, .manage-event-button:active, .cancel-event-button:hover, .cancel-event-button:active {
+color:#F2B56B;
+}
+
+.managing-options {
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  padding: 5px;
+  text-align: center;
 }

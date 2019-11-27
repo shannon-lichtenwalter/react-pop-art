@@ -1,14 +1,15 @@
 import React from 'react';
-import * as moment from 'moment';
-import RequestorsList from '../RequestorsList/RequestorsList'
+//import * as moment from 'moment';
+//import RequestorsList from '../RequestorsList/RequestorsList'
 import './HostedEvents.css';
-import EventsApiService from '../../services/events-api-service';
+//import EventsApiService from '../../services/events-api-service';
 import PopArtContext from '../../context/PopArtContext';
+import GenerateRequestorsList from '../GenerateRequestorsList/GenerateRequestorsList';
 
 class HostedEvents extends React.Component {
-  // state = {
-  //   events: this.props.events
-  // }
+  state = {
+    managingEvent: false,
+  }
   static contextType = PopArtContext;
 
   //  deleteHostsEvent = (event_id) => {
@@ -18,31 +19,42 @@ class HostedEvents extends React.Component {
   //     });
   //   }
 
-  handleCancelEvent = (event_id) => {
-    EventsApiService.deleteEvent(event_id)
-      .then(res => {
-        this.context.deleteEvent(event_id);
-        // this.deleteHostsEvent(event_id);
-      })
-      .catch((e) => this.context.setError(e));
-  }
+  // handleCancelEvent = (event_id) => {
+  //   EventsApiService.deleteEvent(event_id)
+  //     .then(res => {
+  //       this.context.deleteEvent(event_id);
+  //       // this.deleteHostsEvent(event_id);
+  //     })
+  //     .catch((e) => this.context.setError(e));
+  // }
 
   hostedEvents = () => {
     return this.context.userHostedEvents.map((event, index) => {
       return (
-        <div key={index}>
-          <li><span className='event-name'>{event.name}</span>
-            <div><button className='cancel-event-button' onClick={() => this.handleCancelEvent(event.id)}>Cancel Event?</button></div>
-          </li>
-          <ul className='hosted-event-details'>
-            <li>Date: {moment((event.date).toLocaleString()).format('LL')}</li>
-            <li>Time: {moment(event.time, 'HH:mm').format('LT')} </li>
-            <li>Available Artist Slots: {event.slots_available}</li>
-            <li><span className='booking-requests'>Booking Requests: </span>
-              {event.requestors ? <RequestorsList eventId={event.id} slots_available={event.slots_available} requestors={event.requestors} /> : 'none'}
-            </li>
-          </ul>
-        </div>
+        <GenerateRequestorsList key={index} event={event}/>
+        // <div key={index}>
+        //   <li>
+        //     <span className='event-name'>{event.name}</span>
+        //   </li>
+        //     <ul className='hosted-event-details'>
+        //       <li>Date: {moment((event.date).toLocaleString()).format('LL')}</li>
+        //       <li>Time: {moment(event.time, 'HH:mm').format('LT')} </li>
+        //       <li>Available Artist Slots: {event.slots_available}</li>
+              
+        //     </ul>
+          
+        //   <li><button className='manage-event-button' onClick={()=> this.setState({managingEvent:!this.state.managingEvent})}>{this.state.managingEvent ? 'Close' :'Manage Requests'}</button></li>
+        //     {/* {this.state.managingEvent && <GenerateRequestorsList managingEvent={this.state.managingEvent} eventId={event.id} slots_available={event.slots_available} requestors={event.requestors}/>} */}
+        //     {this.state.managingEvent && 
+        //       <div className='managing-options'>
+        //       <li><span className='booking-requests'>Booking Requests: </span>
+        //         {event.requestors ? <RequestorsList eventId={event.id} slots_available={event.slots_available} requestors={event.requestors} /> : 'none'}
+        //       </li>
+              
+        //       </div>
+        //         }
+        //         <li><button className='cancel-event-button' onClick={() => this.handleCancelEvent(event.id)}>Cancel Event?</button></li>
+        //     </div>
       )
     })
   }

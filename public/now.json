@@ -4,14 +4,10 @@
   "name": "pop-art",
   "routes": [
       {
-        "src": "^/static/(.*)",
-        "dest": "/static/$1"
-      },
-      {
         "handle":"filesystem"
       },
       {
-        "src": ".*",
+        "src": "/.*",
         "dest": "/index.html"
       }
   ]
