@@ -1,6 +1,7 @@
 
 ## Pop Art 
-<img src='./src/screenshots/logo.png' height='100' width='200'/>
+<img src='./src/screenshots/logo.png' height='200' width='300'/>
+<br>
 See It Live: https://pop-art.now.sh/
 Created by Shannon Lichtenwalter
 
@@ -16,9 +17,10 @@ Without an account, a user can navigate to the website and browse upcoming event
 By creating an account, a user then has the ability to create events that they are hosting, or they can request to book events if they feel they would be a good fit for the event. 
 
 By hosting an event, the user can specify how many artists they need for said event. The user will then receive requests from artists to book the event. The user can accept or deny the artist's request. 
-<img src='./src/screenshots/EventPageImage.png' height='200' width='100'>
-<img src='./src/screenshots/BookingRequests.png' height='200' width='100'>
-<img src='./src/screenshots/HostedEvents.png' height='200' width='100'>
+<br>
+<img src='./src/screenshots/EventPageImage.png' height='300' width='250'>
+<img src='./src/screenshots/BookingRequests.png' height='300' width='250'>
+<img src='./src/screenshots/HostedEvents.png' height='300' width='250'>
 
 ### Tech Stack
 
