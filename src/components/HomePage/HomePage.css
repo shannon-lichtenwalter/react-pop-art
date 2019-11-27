@@ -64,6 +64,14 @@
 #event-section > h4 {
   height: 54px;
 }
+
+.view-event-details-button {
+  color: #F2B56B;
+}
+.view-event-details-button:hover, .view-event-details-button:active {
+  color:  #2CC7D9;
+}
+
   }
 
   @media only screen and (min-width: 900px) {
