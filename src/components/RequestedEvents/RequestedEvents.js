@@ -9,7 +9,7 @@ class RequestedEvents extends React.Component{
 requestedEvents = () => {
       return this.context.userRequests.map((request, index) => {
         return (
-          <li key={index}><span className='event-name'>{request.name}</span>
+          <li key={index}><div className='event-name-header'><span className='event-name'>{request.name}</span></div>
             <ul className='request-details'>
               <li>Date: {moment(request.date).format('LL')}</li>
               <li>Time: {moment(request.time, 'HH:mm').format('LT')} </li>

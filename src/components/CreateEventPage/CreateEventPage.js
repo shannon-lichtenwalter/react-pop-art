@@ -89,7 +89,7 @@ class CreateEventPage extends React.Component {
               </div>
               <div>
                 <label className='create-event-label' htmlFor="eventName">Event Name<span className='required-field'>*</span></label>
-                <input className='create-event-input' type="text" name="name" id="eventName" required />
+                <input className='create-event-input' maxLength='20' type="text" name="name" id="eventName" required />
               </div>
               <div>
                 <label className='create-event-label' htmlFor="venueName">Venue Name<span className='required-field'>*</span></label>

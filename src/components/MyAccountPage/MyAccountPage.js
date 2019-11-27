@@ -120,7 +120,7 @@ renderDeleteConfirmation = () => {
         <section>
         <h2 className='welcome-header'> Welcome back{user ? ', ' + user.username : ''} </h2>
         </section>
-        <section>
+        <section className='booking-requests-section'>
           <h2 className='booking-requests-header'>My Booking Requests</h2>
           {this.context.userRequests ? <RequestedEvents /> : ''}
         </section>

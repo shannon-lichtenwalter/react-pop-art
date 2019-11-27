@@ -38,3 +38,12 @@
   font-size: 1.1rem;
   color:red;
 }
+
+@media only screen and (min-width: 700px) {
+/* .booking-requests-section {
+  width: 70%;
+  margin-left:auto;
+  margin-right: auto;
+
+} */
+}

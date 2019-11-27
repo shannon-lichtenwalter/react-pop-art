@@ -63,7 +63,7 @@ class EventPageDetails extends React.Component{
     return(
       <>
       <h2 className='event-page-details-h2'>{event.name}</h2>
-        <img src={!event.img_url ? 'https://images.unsplash.com/photo-1519145897500-869c40ccb024?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80' : event.img_url} alt='event' />
+        <img src={!event.img_url ? 'https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60' : event.img_url} alt='event' />
         
         <h3 className='event-page-details-h3'>{moment(event.date).format('LL')} at {moment(event.time, 'HH:mm').format('LT')}</h3>
         <h4 className='event-page-details-h4'>{event.location}, {event.city}, {event.state}</h4>

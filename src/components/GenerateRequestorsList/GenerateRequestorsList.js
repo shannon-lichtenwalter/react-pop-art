@@ -23,7 +23,7 @@ class GenerateRequestorsList extends React.Component {
   render() {
     const event=this.props.event;
     return (
-      <div>
+      <div className='hostedEventDetails'>
       <li className='event-name'>
         <span>{event.name}</span>
       </li>

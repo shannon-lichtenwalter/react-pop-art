@@ -3,7 +3,7 @@
 }
 
 header {
-  margin-top:35px;
+  margin-top:40px;
   background-image: url("../../image-files/rotated-photo.jpg");
   background-size: cover;
   background-repeat:no-repeat;
@@ -39,3 +39,20 @@ nav{
   color: #A61F2B
 }
 
+@media only screen and (min-width: 500px) {
+header {
+  margin-top:47px;
+}
+}
+
+@media only screen and (min-width: 700px) {
+  header {
+    margin-top:51px;
+  }
+  }
+
+  @media only screen and (min-width: 900px) {
+    header {
+      margin-top:63px;
+    }
+    }

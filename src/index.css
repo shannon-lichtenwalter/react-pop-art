@@ -50,3 +50,35 @@ section:nth-child(even) {
   /* background-color: rgb(241, 182, 109, 0.4);; */
 }
 
+@media only screen and (min-width: 500px) {
+  html {
+    font-size: 18px;
+  }
+  section  {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  section {
+    
+    margin-left:auto;
+    margin-right: auto;
+  
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  html {
+    font-size: 22px;
+  }
+  section {
+    width: 70%;
+    margin-left:auto;
+    margin-right: auto;
+  
+  }
+}
+

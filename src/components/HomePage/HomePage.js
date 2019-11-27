@@ -41,11 +41,15 @@ class HomePage extends React.Component {
             onClick={() => this.setState({ filteringResults: !this.state.filteringResults })}
           >Filter Event Results
         </button>
+        
           {this.state.filteringResults && <FilterOptions />}
         </section>
+        <section className='allEventsSection'>
         {this.context.events.map(event => {
           return <Event key={event.id} event={event} />
         })}
+        </section>
+        
         <button className='return-to-top-button' onClick={()=>this.handleReturnToTop()}>Return to Top of Page</button>
       </div>
     )
