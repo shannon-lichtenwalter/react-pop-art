@@ -2,7 +2,7 @@
 ## Pop Art 
 See It Live: https://pop-art.now.sh/
 Created by Shannon Lichtenwalter
-<img src='./src/screenshots/logo.png'/>
+<img src='./src/screenshots/logo.png' height='100' width='200'/>
 
 
 ### Tech Stack
