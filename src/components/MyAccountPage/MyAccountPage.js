@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PopArtContext from '../../context/PopArtContext';
-// import UsersApiService from '../../services/users-api-service';
-// import RequestorsApiService from '../../services/requestors-api-service';
-// import EventsApiService from '../../services/events-api-service';
 import RequestedEvents from '../RequestedEvents/RequestedEvents';
 import HostedEvents from '../HostedEvents/HostedEvents';
 import UsersApiService from '../../services/users-api-service';
@@ -20,59 +17,8 @@ class MyAccountPage extends React.Component {
 
   static contextType = PopArtContext;
 
-  // setUser = (user) => {
-  //   this.setState({
-  //     user
-  //   })
-  // }
-
-  // deleteHostsEvent = (event_id) => {
-  //   const updatedEvents = this.state.events.filter(event => event.id !== event_id);
-  //   this.setState({
-  //     events: updatedEvents
-  //   });
-  // }
-
-  // getAllHostedEvents = () => {
-  //   EventsApiService.getAllEventsHostedByUser()
-  //     .then(result => {
-  //       this.setState({
-  //         events: result
-  //       })
-  //     })
-  //     .catch((e) => this.context.setError(e))
-  // }
-
   componentDidMount() {
     this.context.clearError();
-    // UsersApiService.getLoggedInUser()
-    //   .then(res => {
-    //     this.setUser(res);
-    //   })
-    //   .catch((e) => this.context.setError(e));
-
-    //   this.setState({
-    //     requests: this.context.userRequests
-    //   });
-
-    //replacing this with context link from app
-    // RequestorsApiService.getAllRequests()
-    //   .then(result => {
-    //     this.setState({
-    //       requests: result
-    //     })
-    //   })
-    //   .catch((e) => this.context.setError(e))
-
-    // EventsApiService.getAllEventsHostedByUser()
-    //   .then(result => {
-    //     console.log(result);
-    //     this.setState({
-    //       events: result
-    //     })
-    //   })
-    //   .catch((e) => this.context.setError(e))
-    //this.getAllHostedEvents();
   }
 
   handleDeleteClicked = () => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import RequestorsList from '../RequestorsList/RequestorsList';
-import * as moment from 'moment';
+import moment from 'moment';
 import EventsApiService from '../../services/events-api-service';
 import PopArtContext from '../../context/PopArtContext';
 
-class GenerateRequestorsList extends React.Component {
+class GenerateHostedEventInfo extends React.Component {
   state = {
     managingEvent: false
   }
@@ -15,7 +15,6 @@ class GenerateRequestorsList extends React.Component {
     EventsApiService.deleteEvent(event_id)
       .then(res => {
         this.context.deleteEvent(event_id);
-        // this.deleteHostsEvent(event_id);
       })
       .catch((e) => this.context.setError(e));
   }
@@ -35,7 +34,6 @@ class GenerateRequestorsList extends React.Component {
         </ul>
       
       <li><button className='manage-event-button' onClick={()=> this.setState({managingEvent:!this.state.managingEvent})}>{this.state.managingEvent ? 'Close' :'Manage Requests'}</button></li>
-        {/* {this.state.managingEvent && <GenerateRequestorsList managingEvent={this.state.managingEvent} eventId={event.id} slots_available={event.slots_available} requestors={event.requestors}/>} */}
         {this.state.managingEvent && 
           <div className='managing-options'>
           <li><span className='booking-requests'>Booking Requests: </span>
@@ -51,4 +49,4 @@ class GenerateRequestorsList extends React.Component {
   }
 }
 
-export default GenerateRequestorsList;
+export default GenerateHostedEventInfo;

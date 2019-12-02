@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import EventsApiService from '../../services/events-api-service';
 import FilterOptions from '../FilterOptions/FilterOptions';
 import Event from '../Event/Event';
 import PopArtContext from '../../context/PopArtContext';
@@ -20,16 +19,10 @@ class HomePage extends React.Component {
 
   componentDidMount() {
     this.context.clearError();
-
     this.context.removeFilterFromEvents();
     window.scrollTo(0, 0);
-
-    // EventsApiService.getEvents()
-    //   .then(res => {
-    //     this.context.setEvents(res)
-    //   })
-    //   .catch((e) => this.context.setError(e));
   }
+  
   render() {
     return (
       <div className='homePage'>

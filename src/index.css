@@ -47,7 +47,6 @@ section {
 section:nth-child(even) {
   border-top: 3px solid rgb(241, 182, 109, 0.4);
   border-bottom: 3px solid rgb(241, 182, 109, 0.4);
-  /* background-color: rgb(241, 182, 109, 0.4);; */
 }
 
 @media only screen and (min-width: 500px) {

@@ -35,12 +35,6 @@
 }
 
 
-@media only screen and (min-width: 500px) {
-  /* .requested-events{
-    width: 60%;
-  } */
-  }
-
   @media only screen and (min-width: 700px) {
     .requested-events{
       display: flex;

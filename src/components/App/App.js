@@ -8,8 +8,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
 import MyAccountPage from '../MyAccountPage/MyAccountPage';
+import EventPage from '../EventPage/EventPage';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
-import './App.css';
 import PopArtContext from '../../context/PopArtContext';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
@@ -18,7 +18,7 @@ import TokenService from '../../services/token-service';
 import EventsApiService from '../../services/events-api-service';
 import UsersApiService from '../../services/users-api-service';
 import RequestorsApiService from '../../services/requestors-api-service';
-import EventPage from '../EventPage/EventPage';
+import './App.css';
 
 class App extends React.Component {
   state = {
@@ -142,6 +142,14 @@ class App extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+
+    // Once the component mounts, it will first
+    // get all of the events from the database and 
+    // if the event is from a past date, a post request
+    // will be sent to update the event so that archived is true.
+    // Then, a second get request will get all of the events where
+    // archived is not true so that the app only displays upcoming events.  
+
     EventsApiService.archiveEvents()
       .then((res) => {
         return null
@@ -154,6 +162,9 @@ class App extends React.Component {
       })
       .catch((e) => this.setError(e));
 
+      //If there is a logged in user, then an API request
+      // will be made to get information about the current user
+      //The app will save the current user to state.
 
     if (this.state.loggedIn) {
       UsersApiService.getLoggedInUser()
@@ -161,8 +172,11 @@ class App extends React.Component {
           this.setLoggedInUser(res);
         })
         .catch((e) => this.setError(e));
-
+//Then API requests will be made to get all of the events 
+//that the user has requested to book.
       this.setUserRequests();
+//Lastly, the state will be set with all of the event that
+// the user is hosting. 
       this.getAllHostedEvents();
     };
 
@@ -217,9 +231,6 @@ class App extends React.Component {
               </Switch>
             </ErrorBoundary>
           </main>
-          {/* <footer>
-            <p> to return to landing page click <Link to='/'>Here</Link></p>
-          </footer> */}
         </div>
       </PopArtContext.Provider>
     );

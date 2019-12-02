@@ -1,10 +1,9 @@
 import React from 'react';
 import PopArtContext from '../../context/PopArtContext';
-//import * as moment from 'moment';
 import EventsApiService from '../../services/events-api-service';
-//import RequestorsApiService from '../../services/requestors-api-service';
 import EventPageDetails from '../EventPageDetails/EventPageDetails';
 import './EventPage.css';
+
 class EventPage extends React.Component {
   state = {
     event: null

@@ -22,27 +22,8 @@
   margin-top: 8px;
 }
 
-/* .cancel-event-button{
-  color: grey;
-  font-family: 'Bangers', cursive;
-  font-size: 1.1rem;
-  background-color: transparent;
-  margin-top: 0px;;
-  margin-left: 0px;
-  margin-right: 0px;
-  border: none;
-  font-size: 1.2rem;
-  padding-bottom:30px;
-  text-align: left;
-  padding: 0px;
-} */
-
-/* .cancel-event-button:hover, .cancel-event-button:active {
-  color: #F2B56B;
-} */
 
 .manage-event-button, .cancel-event-button {
-  /* height: 30px; */
   font-size: 0.9rem;
   background-color:transparent;
   margin-top: 3px;
@@ -67,12 +48,6 @@ color:#F2B56B;
 }
 
 
-@media only screen and (min-width: 500px) {
-/* .hosted-events{
-  width: 60%; */
-  
-/* } */
-}
 
 @media only screen and (min-width: 700px) {
   .hosted-events{
@@ -90,9 +65,6 @@ color:#F2B56B;
     margin-left: 10px;
     margin-right: 10px;
     width: 42%;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 20px;
