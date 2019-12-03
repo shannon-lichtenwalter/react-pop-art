@@ -79,7 +79,7 @@ renderDeleteConfirmation = () => {
         </section>
         <section className='account-options'>
           <h2>Account Options</h2>
-          <button className='delete-account-buttons' onClick={()=> this.handleDeleteClicked()}>Delete Account</button>
+          <button className='my-account-page-buttons' onClick={()=> this.handleDeleteClicked()}>Delete Account</button>
           {this.state.deletingAccount && this.renderDeleteConfirmation()}
         </section>
       </div>
