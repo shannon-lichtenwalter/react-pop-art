@@ -9,6 +9,7 @@
   border: none;
   font-size: 1.4rem;
   height: 50px;
+  background-color:blue;
 }
 
 .create-new-event-button:hover, .create-new-event-button:active, .delete-account-buttons:hover, .delete-account-buttons:active{
