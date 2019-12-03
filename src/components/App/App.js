@@ -175,14 +175,13 @@ class App extends React.Component {
           this.setLoggedInUser(res);
         })
         .catch((e) => this.setError(e));
-//Then API requests will be made to get all of the events 
-//that the user has requested to book.
+      //Then API requests will be made to get all of the events 
+      //that the user has requested to book.
       this.setUserRequests();
-//Lastly, the state will be set with all of the event that
-// the user is hosting. 
+      //Lastly, the state will be set with all of the event that
+      // the user is hosting. 
       this.getAllHostedEvents();
     };
-
   };
 
 

@@ -9,7 +9,7 @@ class RequestedEvents extends React.Component{
   requestedEvents = () => {
     return this.context.userRequests.map((request, index) => {
       return (
-        <div key={index}>
+        <div className= 'requested-event-list' key={index}>
           <li>
             <div className='event-name-header'>
               <span className='event-name'>{request.name}</span>

@@ -8,7 +8,7 @@
   list-style:none;
 }
 
-.requested-events > li {
+.requested-event-list {
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -45,7 +45,7 @@
     justify-content: flex-start;
   }
 
-  .requested-events > li {
+  .requested-event-list {
     padding: 5px;
     width: 33%;
     flex-grow: 0;
