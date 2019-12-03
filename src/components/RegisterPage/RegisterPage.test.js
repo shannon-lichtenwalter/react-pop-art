@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RegisterPage from './RegisterPage';
 import {MemoryRouter} from 'react-router-dom';
+import RegisterPage from './RegisterPage';
+
 
 beforeAll(() => {
   window.scrollTo = jest.fn();

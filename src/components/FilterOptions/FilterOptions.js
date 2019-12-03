@@ -54,48 +54,46 @@ class FilterOptions extends React.Component {
     const month = ("0" + (todaysDate.getMonth() + 1)).slice(-2); //MM
     const day = ("0" + todaysDate.getDate()).slice(-2); //DD
     const minDay = (year + "-" + month + "-" + day); //"YYYY-MM-DD"
-
     return minDay;
   }
 
-render() {
-  return (
-    <form className="filterEvents" onSubmit={this.handleFilterSubmit}>
-      <fieldset className='filterOptions' name="filterOptions">
-        <legend>Filter Event Results</legend>
-        <div>
-          <label htmlFor="filterLocation">City</label>
-          <input type="text" name="city" id="filterLocation" />
-        </div>
-        <div>
-          <label htmlFor="filterEventType">Type of Event</label>
-          <select name="event_type" id="filterEventType">
-            <option value=''>All</option>
-            <option>Music Performance</option>
-            <option>Art Show</option>
-            <option>Dance Performance</option>
-            <option>Book Signing</option>
-            <option>Craft Fair</option>
-            <option>Poetry Reading</option>
-            <option>Fashion Show</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="filterDate">Date of Event</label>
-          <input min={this.renderTodaysDate()}  type="date" name="date" id="filterDate" />
-        </div>
-        <button onClick={()=>this.handleViewAllEvents()} className='filter-button' type="reset">View All Events</button>
-        <button className='filter-button' type="submit">Filter Events</button>
-
-        <div role='alert'>
-          {this.state.error && <p className='red'>{this.state.error}</p>}
-          {this.state.message && <p>{this.state.message}</p>}
-        </div>
-      </fieldset>
-    </form>
-  )
-}
+  render() {
+    return (
+      <form className="filterEvents" onSubmit={this.handleFilterSubmit}>
+        <fieldset className='filterOptions' name="filterOptions">
+          <legend>Filter Event Results</legend>
+          <div>
+            <label htmlFor="filterLocation">City</label>
+            <input type="text" name="city" id="filterLocation" />
+          </div>
+          <div>
+            <label htmlFor="filterEventType">Type of Event</label>
+            <select name="event_type" id="filterEventType">
+              <option value=''>All</option>
+              <option>Music Performance</option>
+              <option>Art Show</option>
+              <option>Dance Performance</option>
+              <option>Book Signing</option>
+              <option>Craft Fair</option>
+              <option>Poetry Reading</option>
+              <option>Fashion Show</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="filterDate">Date of Event</label>
+            <input min={this.renderTodaysDate()}  type="date" name="date" id="filterDate" />
+          </div>
+          <button onClick={()=>this.handleViewAllEvents()} className='filter-button' type="reset">View All Events</button>
+          <button className='filter-button' type="submit">Filter Events</button>
+          <div role='alert'>
+            {this.state.error && <p className='red'>{this.state.error}</p>}
+            {this.state.message && <p>{this.state.message}</p>}
+          </div>
+        </fieldset>
+      </form>
+    )
+  }
 }
 
 export default FilterOptions;

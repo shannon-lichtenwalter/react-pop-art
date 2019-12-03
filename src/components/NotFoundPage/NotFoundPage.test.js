@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NotFoundPage from './NotFoundPage';
 import {MemoryRouter} from 'react-router-dom';
+import NotFoundPage from './NotFoundPage';
+
 
 describe('NotFoundPage component', () => {
   it('renders without crashing', () => {

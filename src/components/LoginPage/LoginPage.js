@@ -45,7 +45,7 @@ class LoginPage extends React.Component {
       })
   }
 
- componentDidMount = () => {
+  componentDidMount = () => {
     window.scrollTo(0, 0);
   }
   
@@ -53,11 +53,11 @@ class LoginPage extends React.Component {
     const { error } = this.state;
     return (
       <section className='login-form'>
-        <form
-          className="sign-in-form"
-          onSubmit={this.handleSubmitJwtAuth}>
+        <form className="sign-in-form" onSubmit={this.handleSubmitJwtAuth}>
           <fieldset className='login-fields' name="userName-password">
-            <legend>Login to <span className='app-name'>Pop Art</span></legend>
+            <legend>
+              Login to <span className='app-name'>Pop Art</span>
+            </legend>
             <div role='alert'>
               {error && <p className='red'>{error}</p>}
             </div>

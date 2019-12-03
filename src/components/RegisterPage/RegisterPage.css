@@ -2,10 +2,10 @@
   color: green;
   font-weight: bold;
 }
+
 .grey{
   color: grey;
 }
-
 
 .sign-up-fields {
   margin-top: 10px;
@@ -15,14 +15,12 @@
   font-size: 1.4rem;
 }
 
-
 .sign-up-form {
   width: 90%;
   margin-top: 50px;
   margin-left:auto;
   margin-right: auto;
   margin-bottom: 50px;
-
 }
 
 .register-button {

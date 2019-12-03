@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import RequestorsList from './RequestorsList';
 import {MemoryRouter} from 'react-router-dom';
+import RequestorsList from './RequestorsList';
 
 describe('Requestors List component', () => {
   it('renders without crashing', () => {

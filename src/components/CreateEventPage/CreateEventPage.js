@@ -12,7 +12,7 @@ class CreateEventPage extends React.Component {
 
   handleSubmitNewEvent = event => {
     event.preventDefault();
-    this.setState({ error: null })
+    this.setState({ error: null });
     const { name, date, time, location, city, state, slots_available, event_type, paid, description, additional_details, img_url } = event.target;
     const newEvent = {
       name: name.value,
@@ -49,7 +49,6 @@ class CreateEventPage extends React.Component {
         img_url.value = ''
       })
       .catch((e) => this.context.setError(e))
-
   }
 
   renderTodaysDate() {
@@ -58,9 +57,9 @@ class CreateEventPage extends React.Component {
     const month = ("0" + (todaysDate.getMonth() + 1)).slice(-2); //MM
     const day = ("0" + todaysDate.getDate()).slice(-2); //DD
     const minDay = (year + "-" + month + "-" + day); //"YYYY-MM-DD"
-
     return minDay;
   }
+
   componentDidMount() {
     window.scrollTo(0, 0);
   }
@@ -68,6 +67,7 @@ class CreateEventPage extends React.Component {
     const { error } = this.state;
     return (
       <div>
+
         <section className='before-create-event'>
           <h2>Before you post...</h2>
           <p>Before creating an event, please note that it is your responsibility
@@ -75,15 +75,16 @@ class CreateEventPage extends React.Component {
             It is the event host's responsibility to ensure that the event site and facilities
             are appropriate for the event type. Pop Art is not responsible for the outcome of any events. 
             Pop Art is not responsible for arranging payments between hosts and artists.
-        </p>
-
+          </p>
         </section>
+
         <section className='create-event-form-section'>
           <h2> Create an Event</h2>
           <form className="create-event-form" onSubmit={this.handleSubmitNewEvent}>
             <fieldset name="userName-password" className='create-event-fields'>
-              <legend className='create-event-legend'>Submit Event Details</legend>
-              
+              <legend className='create-event-legend'>
+                Submit Event Details
+              </legend>
               <div role='alert'>
                 {error && <p className='red'>{error}</p>}
               </div>
@@ -155,7 +156,6 @@ class CreateEventPage extends React.Component {
                   <option value="WI">Wisconsin</option>
                   <option value="WY">Wyoming</option>
                 </select>
-
               </div>
               <div>
                 <label className='create-event-label' htmlFor="date">Date<span className='required-field'>*</span></label>
@@ -165,18 +165,20 @@ class CreateEventPage extends React.Component {
                 <label className='create-event-label' htmlFor="time">Time<span className='required-field'>*</span></label>
                 <input className='create-event-input' placeholder="example: 6:00pm" type="time" name="time" id="time" required />
               </div>
-              <label className='create-event-label' htmlFor="eventType">Type of Event</label>
-              <select className='create-event-input' name="event_type" id="eventType">
-                <option value='Other'></option>
-                <option>Music Performance</option>
-                <option>Art Show</option>
-                <option>Dance Performance</option>
-                <option>Book Signing</option>
-                <option>Craft Fair</option>
-                <option>Poetry Reading</option>
-                <option>Fashion Show</option>
-                <option>Other</option>
-              </select>
+              <div>
+                <label className='create-event-label' htmlFor="eventType">Type of Event</label>
+                <select className='create-event-input' name="event_type" id="eventType">
+                  <option value='Other'></option>
+                  <option>Music Performance</option>
+                  <option>Art Show</option>
+                  <option>Dance Performance</option>
+                  <option>Book Signing</option>
+                  <option>Craft Fair</option>
+                  <option>Poetry Reading</option>
+                  <option>Fashion Show</option>
+                  <option>Other</option>
+                </select>
+              </div>
               <div>
                 <label className='create-event-label' htmlFor="description">Description</label>
                 <textarea className='create-event-input' rows='1' name="description" id="description"></textarea>
@@ -195,8 +197,7 @@ class CreateEventPage extends React.Component {
               </div>
               <div>
                 <label className='create-event-label' htmlFor="details">Additional Details</label>
-                <textarea className='create-event-input' rows='1' name="additional_details" id="details"
-                ></textarea>
+                <textarea className='create-event-input' rows='1' name="additional_details" id="details"></textarea>
               </div>
               <div>
                 <label className='create-event-label' htmlFor="eventPhoto">Choose Icon</label>
@@ -230,16 +231,18 @@ class CreateEventPage extends React.Component {
                   <option value='https://images.unsplash.com/photo-1536867520774-5b4f2628a69b?ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80'>
                     Fashion Design Icon
                   </option>
-                  
                 </select>
               </div>
               <div className='submit-create-event-form'>
-              <p className='required-field-p'> <span className='required-field'>*</span>required-field</p>
-              <button className='create-event-button' type="submit">Post Event</button>
+                <p className='required-field-p'> 
+                  <span className='required-field'>*</span>required-field
+                </p>
+                <button className='create-event-button' type="submit">Post Event</button>
               </div>
             </fieldset>
           </form>
         </section>
+
       </div>
     )
   }

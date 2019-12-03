@@ -1,6 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
+import PopArtContext from '../../context/PopArtContext';
+import TokenService from '../../services/token-service';
+import EventsApiService from '../../services/events-api-service';
+import UsersApiService from '../../services/users-api-service';
+import RequestorsApiService from '../../services/requestors-api-service';
+
 import Nav from '../Nav/Nav';
 import LandingPage from '../LandingPage/LandingPage';
 import HomePage from '../HomePage/HomePage';
@@ -10,14 +17,10 @@ import CreateEventPage from '../CreateEventPage/CreateEventPage';
 import MyAccountPage from '../MyAccountPage/MyAccountPage';
 import EventPage from '../EventPage/EventPage';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
-import PopArtContext from '../../context/PopArtContext';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import PrivateRoute from '../Utils/PrivateRoute';
-import TokenService from '../../services/token-service';
-import EventsApiService from '../../services/events-api-service';
-import UsersApiService from '../../services/users-api-service';
-import RequestorsApiService from '../../services/requestors-api-service';
+
 import './App.css';
 
 class App extends React.Component {
@@ -215,7 +218,6 @@ class App extends React.Component {
               <div className='badge'>
                 <Link to='/home'><h1 className='mainLogo'>Pop Art</h1></Link>
               </div>
-              
             </header>
             {this.state.error && <p className='red'>There was an error! Oh no!</p>}
             <ErrorBoundary>

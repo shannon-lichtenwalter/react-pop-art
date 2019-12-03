@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginPage from './LoginPage';
 import { MemoryRouter } from 'react-router-dom';
+import LoginPage from './LoginPage';
 
 beforeAll(() => {
   window.scrollTo = jest.fn();

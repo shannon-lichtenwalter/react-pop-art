@@ -11,10 +11,9 @@ header {
   display:flex;
   justify-content: center;
   align-items: center;
-
 }
 
-h1{
+h1 {
   color:white;
   font-size: 60px;
   font-family: 'Bangers', cursive;
@@ -30,7 +29,7 @@ h1{
   justify-content: center;
 }
 
-nav{
+nav {
   background-color: white;
   font-family: 'Bangers', cursive;
 }
@@ -40,9 +39,9 @@ nav{
 }
 
 @media only screen and (min-width: 500px) {
-header {
-  margin-top:47px;
-}
+  header {
+    margin-top:47px;
+  }
 }
 
 @media only screen and (min-width: 700px) {
@@ -51,8 +50,8 @@ header {
   }
   }
 
-  @media only screen and (min-width: 900px) {
-    header {
-      margin-top:63px;
-    }
-    }
+@media only screen and (min-width: 900px) {
+  header {
+    margin-top:63px;
+  }
+}

@@ -12,7 +12,7 @@ export default function PrivateRoute({ component, ...props }) {
           ? <Component {...componentProps} />
           : <Redirect
               to='/login'
-            />
+          />
       )}
     />
   )

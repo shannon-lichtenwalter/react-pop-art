@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Nav.css';
 import TokenService from '../../services/token-service';
 import PopArtContext from '../../context/PopArtContext';
+import './Nav.css';
 
 class Nav extends React.Component {
 
@@ -18,7 +18,7 @@ class Nav extends React.Component {
     this.context.setLoggedInUser(null);
   }
 
-  renderLogoutLinks = () => {
+  renderLoggedInLinks = () => {
     return (
       <>
       <li><Link to='/my-account'>My Account</Link></li>
@@ -27,7 +27,7 @@ class Nav extends React.Component {
     )
   }
 
-  renderLoginLinks = () => {
+  renderLoggedOutLinks = () => {
     return (
       <>
         <li><Link to='/login'>Login</Link></li>
@@ -43,11 +43,9 @@ class Nav extends React.Component {
         <li><Link to='/home'>Home</Link></li>
         <li><Link to='/'>About</Link></li>
         {TokenService.hasAuthToken()
-          ? this.renderLogoutLinks()
-          : this.renderLoginLinks()}
+          ? this.renderLoggedInLinks()
+          : this.renderLoggedOutLinks()}
       </ul>
-
-
     )
   }
 }

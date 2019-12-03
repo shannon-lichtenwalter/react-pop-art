@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AuthApiService from '../../services/auth-api-service';
-import './RegisterPage.css';
 import TokenService from '../../services/token-service';
 import UsersApiService from '../../services/users-api-service';
 import PopArtContext from '../../context/PopArtContext';
+import './RegisterPage.css';
 
 class RegisterPage extends React.Component {
   state = {
@@ -15,8 +15,8 @@ class RegisterPage extends React.Component {
 
   static contextType = PopArtContext;
 
-    componentDidMount() {
-      window.scrollTo(0, 0);
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   handleLoginSuccess = () => {
@@ -38,10 +38,9 @@ class RegisterPage extends React.Component {
     if (password.value !== password2.value) {
       this.setState({
         error: 'Passwords must match'
-      })
+      });
       return null;
     }
-
     AuthApiService.postUser({
       username: username.value,
       password: password.value,
@@ -108,13 +107,10 @@ class RegisterPage extends React.Component {
 
 
   render() {
-
     const { error } = this.state;
     return (
       <section className='sign-up-form'>
-        <form
-          onSubmit={this.handleSubmit}>
-
+        <form onSubmit={this.handleSubmit}>
           <fieldset className= 'sign-up-fields' name="userName-password">
             <legend>Sign Up for <span className='app-name'>Pop Art</span></legend>
             <div role='alert'>

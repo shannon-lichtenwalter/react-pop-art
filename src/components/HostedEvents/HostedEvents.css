@@ -14,8 +14,8 @@
 }
 
 .hosted-event-details {
-    list-style: none;
-    padding:0px;
+  list-style: none;
+  padding:0px;
 }
 
 .event-name {
@@ -34,7 +34,7 @@
 }
 
 .manage-event-button:hover, .manage-event-button:active, .cancel-event-button:hover, .cancel-event-button:active {
-color:#F2B56B;
+  color:#F2B56B;
 }
 
 .managing-options {
@@ -56,12 +56,9 @@ color:#F2B56B;
     flex-wrap: wrap;
     align-content: space-between;
     justify-content: space-between;
-    
-    
   }
 
   .hostedEventDetails {
-  
     margin-left: 10px;
     margin-right: 10px;
     width: 42%;
@@ -81,13 +78,11 @@ color:#F2B56B;
     word-break: break-word;
     height: 64px;
   }
+}
 
 
+@media only screen and (min-width: 700px) {
+  .event-name {
+    height: 77px;
   }
-
-
-  @media only screen and (min-width: 700px) {
-    .event-name {
-      height: 77px;
-    }
-  };
+};

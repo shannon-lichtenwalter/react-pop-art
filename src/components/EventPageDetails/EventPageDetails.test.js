@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import EventPageDetails from './EventPageDetails';
 import { MemoryRouter } from 'react-router-dom';
 import PopArtContext from '../../context/PopArtContext';
-
+import EventPageDetails from './EventPageDetails';
 
 
 describe('CreateEventPage component', () => {

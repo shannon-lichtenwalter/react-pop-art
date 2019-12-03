@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MyAccountPage from './MyAccountPage';
 import { MemoryRouter } from 'react-router-dom';
+import MyAccountPage from './MyAccountPage';
 import PopArtContext from '../../context/PopArtContext';
 
 describe('MyAccountPage component', () => {

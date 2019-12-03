@@ -19,13 +19,9 @@ code {
     monospace;
 }
 
-nav,
-footer {
+nav {
   padding: 1% 0;
   background-color: white;
-}
-
-nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -53,6 +49,7 @@ section:nth-child(even) {
   html {
     font-size: 18px;
   }
+
   section  {
     width: 80%;
     margin-right: auto;
@@ -60,24 +57,15 @@ section:nth-child(even) {
   }
 }
 
-@media only screen and (min-width: 700px) {
-  section {
-    
-    margin-left:auto;
-    margin-right: auto;
-  
-  }
-}
-
 @media only screen and (min-width: 900px) {
   html {
     font-size: 22px;
   }
+
   section {
     width: 70%;
     margin-left:auto;
     margin-right: auto;
-  
   }
 }
 

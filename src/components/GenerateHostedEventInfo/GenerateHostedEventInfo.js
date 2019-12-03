@@ -1,6 +1,6 @@
 import React from 'react';
-import RequestorsList from '../RequestorsList/RequestorsList';
 import moment from 'moment';
+import RequestorsList from '../RequestorsList/RequestorsList';
 import EventsApiService from '../../services/events-api-service';
 import PopArtContext from '../../context/PopArtContext';
 
@@ -23,28 +23,37 @@ class GenerateHostedEventInfo extends React.Component {
     const event=this.props.event;
     return (
       <div className='hostedEventDetails'>
-      <li className='event-name'>
-        <span>{event.name}</span>
-      </li>
+        <li className='event-name'>
+          <span>{event.name}</span>
+        </li>
         <ul className='hosted-event-details'>
           <li>Date: {moment.utc(event.date).format('LL')}</li>
           <li>Time: {moment(event.time, 'HH:mm').format('LT')} </li>
           <li>Available Artist Slots: {event.slots_available}</li>
-          
         </ul>
-      
-      <li><button className='manage-event-button' onClick={()=> this.setState({managingEvent:!this.state.managingEvent})}>{this.state.managingEvent ? 'Close' :'Manage Requests'}</button></li>
+        <li>
+          <button 
+            className='manage-event-button' 
+            onClick={()=> this.setState({managingEvent:!this.state.managingEvent})}>
+              {this.state.managingEvent ? 'Close' :'Manage Requests'}
+          </button>
+        </li>
         {this.state.managingEvent && 
-          <div className='managing-options'>
-          <li><span className='booking-requests'>Booking Requests: </span>
+        <div className='managing-options'>
+          <li>
+            <span className='booking-requests'>Booking Requests: </span>
             {event.requestors ? <RequestorsList eventId={event.id} slots_available={event.slots_available} requestors={event.requestors} /> : 'none'}
           </li>
-          
-          </div>
-            }
-            <li><button className='cancel-event-button' onClick={() => this.handleCancelEvent(event.id)}>Cancel Event?</button></li>
         </div>
-    
+        }
+        <li>
+          <button 
+            className='cancel-event-button' 
+            onClick={() => this.handleCancelEvent(event.id)}>
+              Cancel Event?
+          </button>
+        </li>
+      </div>
     )
   }
 }

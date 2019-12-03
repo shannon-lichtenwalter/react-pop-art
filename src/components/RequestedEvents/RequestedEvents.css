@@ -27,39 +27,40 @@
 .pending-status{
   color: grey;
 }
+
 .accepted-status {
   color: green;
 }
+
 .denied-status {
   color: red;
 }
 
+@media only screen and (min-width: 700px) {
+  .requested-events{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: flex-start;
+  }
 
-  @media only screen and (min-width: 700px) {
-    .requested-events{
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-content: space-between;
-      justify-content: flex-start;
-    }
+  .requested-events > li {
+    padding: 5px;
+    width: 33%;
+    flex-grow: 0;
+  }
 
-    .requested-events > li {
-      padding: 5px;
-      width: 33%;
-      flex-grow: 0;
-    }
-
-    .event-name-header {
-      height: 64px;
-      word-break: break-word; 
-      margin-bottom:5px;
-    }
-    }
+  .event-name-header {
+    height: 64px;
+    word-break: break-word; 
+    margin-bottom:5px;
+  }
+}
 
 
-    @media only screen and (min-width: 900px) {
-      .event-name-header {
-        height: 70px;
-      }
-    }
+@media only screen and (min-width: 900px) {
+  .event-name-header {
+    height: 70px;
+  }
+}

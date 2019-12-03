@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HostedEvents from './HostedEvents';
 import { MemoryRouter } from 'react-router-dom';
+import HostedEvents from './HostedEvents';
 import PopArtContext from '../../context/PopArtContext';
 
 describe('HostedEvents component', () => {

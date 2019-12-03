@@ -1,8 +1,8 @@
 import React from 'react';
-import PopArtContext from '../../context/PopArtContext';
-import moment from 'moment'
-import RequestorsApiService from '../../services/requestors-api-service';
 import {Link} from 'react-router-dom';
+import moment from 'moment';
+import PopArtContext from '../../context/PopArtContext';
+import RequestorsApiService from '../../services/requestors-api-service';
 import './EventPageDetails.css';
 
 class EventPageDetails extends React.Component{
@@ -24,10 +24,12 @@ class EventPageDetails extends React.Component{
     let disabledStatus= false;
     const alreadyRequested = this.context.userRequests.find(request => request.event_id === this.props.event.id );
     const alreadyHosting = this.context.currentUser.user_id === this.props.event.host_id;
+    
     if(alreadyHosting){
       buttonText = 'This is your event';
       disabledStatus = true;
     }
+
     if(alreadyRequested){
       buttonText = `Request ${alreadyRequested.booking_status}`;
       disabledStatus = true;
@@ -45,9 +47,9 @@ class EventPageDetails extends React.Component{
 
     return (
       <button className={disabledStatus ? 'disabled-request-button' : 'request-button'}
-      disabled={disabledStatus}
-      onClick={() => this.handleRequestEvent()}>
-        {buttonText}
+        disabled={disabledStatus}
+        onClick={() => this.handleRequestEvent()}>
+          {buttonText}
       </button> 
     )
   }
@@ -58,11 +60,10 @@ class EventPageDetails extends React.Component{
 
   render(){
     const event = this.props.event;
-    return(
+    return (
       <>
-      <h2 className='event-page-details-h2'>{event.name}</h2>
+        <h2 className='event-page-details-h2'>{event.name}</h2>
         <img src={!event.img_url ? 'https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60' : event.img_url} alt='event' />
-        
         <h3 className='event-page-details-h3'>{moment.utc(event.date).format('LL')} at {moment(event.time, 'HH:mm').format('LT')}</h3>
         <h4 className='event-page-details-h4'>{event.location}, {event.city}, {event.state}</h4>
         <h4 className='event-page-details-slots'>{event.slots_available === 1 ? event.slots_available + ' Artist Slot Available': event.slots_available + ' Artist Slots Available'}</h4>

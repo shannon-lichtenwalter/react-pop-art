@@ -18,22 +18,16 @@ class EventPage extends React.Component {
           event: res
         })
       })
-        .catch((e) => this.context.setError(e));
-      
+      .catch((e) => this.context.setError(e));
   };
 
 
   render() {
-
-    const event = this.state.event ? this.state.event[0] : null
-
+    const event = this.state.event ? this.state.event[0] : null;
     return (
     <>
       <section className='event-page-details-section'>
         {event && this.context.currentUser && <EventPageDetails event={this.state.event[0]}/>}
-      
-      
-      
       </section>
     </>
     )

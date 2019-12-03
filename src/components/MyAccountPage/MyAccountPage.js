@@ -37,12 +37,12 @@ class MyAccountPage extends React.Component {
     UsersApiService.deleteAccount()
       .then(() => {
         TokenService.clearAuthToken();
-    this.context.setLoggedIn();
-    this.context.clearError();
-    this.context.clearUserRequests();
-    this.context.clearUserHostedEvents();
-    this.context.removeFilterFromEvents();
-    this.context.setLoggedInUser(null);
+        this.context.setLoggedIn();
+        this.context.clearError();
+        this.context.clearUserRequests();
+        this.context.clearUserHostedEvents();
+        this.context.removeFilterFromEvents();
+        this.context.setLoggedInUser(null);
       })
       .catch((e) => this.context.setError)
   }
@@ -64,28 +64,24 @@ renderDeleteConfirmation = () => {
     return (
       <div className='my-account-page-section'>
         <section>
-        <h2 className='welcome-header'> Welcome back{user ? ', ' + user.username : ''} </h2>
+          <h2 className='welcome-header'> Welcome back{user ? ', ' + user.username : ''} </h2>
         </section>
         <section className='booking-requests-section'>
           <h2 className='booking-requests-header'>My Booking Requests</h2>
           {this.context.userRequests ? <RequestedEvents /> : ''}
         </section>
-
         <section>
           <h2 className='hosted-events-header'>My Hosted Events</h2>
           <Link to='/create-event'>
             <button className='create-new-event-button'>Create New Event</button>
           </Link>
           {this.context.userHostedEvents ? <HostedEvents /> : ''}
-          
         </section>
-
         <section className='account-options'>
-        <h2>Account Options</h2>
-        
+          <h2>Account Options</h2>
           <button className='delete-account-buttons' onClick={()=> this.handleDeleteClicked()}>Delete Account</button>
           {this.state.deletingAccount && this.renderDeleteConfirmation()}
-      </section>
+        </section>
       </div>
     )
   }
