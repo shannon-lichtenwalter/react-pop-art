@@ -72,16 +72,15 @@ renderDeleteConfirmation = () => {
         </section>
         <section>
           <h2 className='hosted-events-header'>My Hosted Events</h2>
-          {/* <Link to='/create-event'>
+          <Link to='/create-event'>
             <button className='create-new-event-button'>Create New Event</button>
-          </Link> */}
-          <button className= 'create-new-event-button'>Create New Event</button>
+          </Link>
           {this.context.userHostedEvents ? <HostedEvents /> : ''}
         </section>
         <section className='account-options'>
           <h2>Account Options</h2>
-          {/* <button className='delete-account-buttons' onClick={()=> this.handleDeleteClicked()}>Delete Account</button>
-          {this.state.deletingAccount && this.renderDeleteConfirmation()} */}
+          <button className='delete-account-buttons' onClick={()=> this.handleDeleteClicked()}>Delete Account</button>
+          {this.state.deletingAccount && this.renderDeleteConfirmation()}
         </section>
       </div>
     )

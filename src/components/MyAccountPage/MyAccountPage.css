@@ -1,5 +1,5 @@
 .create-new-event-button, .delete-account-buttons {
-  color: #F2B56B;
+  color: #F2B56B !important;
   font-family: 'Bangers', cursive;
   font-size: 1.1rem;
   background-color: transparent;
