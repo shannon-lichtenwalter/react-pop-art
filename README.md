@@ -24,7 +24,7 @@ By hosting an event, the user can specify how many artists they need for said ev
 
 ### Tech Stack
 
-This application was built using React, Javascript, Html, and CSS. It is intended to interact with the Pop Art Express Server that was built with Node, Express, and PostgreSQL.
+This application was built using React, Javascript, Html, and CSS. It is intended to interact with the Pop Art Express Server that was built with NodeJS, Express, and PostgreSQL.
 
 
 ### The API
