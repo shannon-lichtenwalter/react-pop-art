@@ -28,6 +28,5 @@ This application was built using React, Javascript, Html, and CSS. It is intende
 
 
 ### The API
-The api stores data about users of Pop Art and the events the create and request to book. The api requires authorization to access most endpoints with the exception of 
-getting a list of all upcoming events. 
+The api stores data about users of Pop Art and the events the create and request to book. The api requires authorization to access most endpoints with the exception of getting a list of all upcoming events. 
 
