@@ -11,7 +11,7 @@
   height: 50px;
 } */
 
-.my-account-page-buttons {
+.my-account-page-buttons, a > .my-account-page-buttons {
   color: #F2B56B;
   font-family: 'Bangers', cursive;
   font-size: 1.1rem;
