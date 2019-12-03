@@ -24,9 +24,12 @@
   height: 50px;
 }
 
-.create-new-event-button:hover, .create-new-event-button:active, .delete-account-buttons:hover, .delete-account-buttons:active{
+.my-account-page-buttons:hover, a > .my-account-page-buttons:active {
   color: #2CC7D9;
 }
+/* .create-new-event-button:hover, .create-new-event-button:active, .delete-account-buttons:hover, .delete-account-buttons:active{
+  color: #2CC7D9;
+} */
 
 .my-account-page-section {
   width: 90%;

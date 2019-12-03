@@ -52,8 +52,8 @@ renderDeleteConfirmation = () => {
     <>
       <p>Warning, by deleting your account you will also be deleting all of your posted events and all of your event requests.</p>
       <h4 className='final-confirm-delete'>Are You Sure You Want to Delete?</h4>
-      <button className='delete-account-buttons' onClick ={()=> this.deleteAccount()}>yes, delete my account now</button>
-      <button className='delete-account-buttons' onClick={()=> this.handleCancelDelete()}>no, I changed my mind</button>
+      <button className='my-account-page-buttons' onClick ={()=> this.deleteAccount()}>yes, delete my account now</button>
+      <button className='my-account-page-buttons' onClick={()=> this.handleCancelDelete()}>no, I changed my mind</button>
     </>
   )
 }
