@@ -159,11 +159,11 @@ class CreateEventPage extends React.Component {
               </div>
               <div>
                 <label className='create-event-label' htmlFor="date">Date<span className='required-field'>*</span></label>
-                <input className='create-event-input' type="date" min={this.renderTodaysDate()} name="date" id="date" required />
+                <input className='create-event-input' placeholder= "mm/dd/yyyy" type="date" min={this.renderTodaysDate()} name="date" id="date" required />
               </div>
               <div>
                 <label className='create-event-label' htmlFor="time">Time<span className='required-field'>*</span></label>
-                <input className='create-event-input' placeholder="example: 6:00pm" type="time" name="time" id="time" required />
+                <input className='create-event-input' placeholder="example: 06:00 PM" type="time" name="time" id="time" required />
               </div>
               <div>
                 <label className='create-event-label' htmlFor="eventType">Type of Event</label>
