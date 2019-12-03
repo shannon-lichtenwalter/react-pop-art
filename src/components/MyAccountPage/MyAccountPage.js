@@ -73,7 +73,7 @@ renderDeleteConfirmation = () => {
         <section>
           <h2 className='hosted-events-header'>My Hosted Events</h2>
           <Link to='/create-event'>
-            <button className='.my-account-page-buttons'>Create New Event</button>
+            <button className='my-account-page-buttons'>Create New Event</button>
           </Link>
           {this.context.userHostedEvents ? <HostedEvents /> : ''}
         </section>
