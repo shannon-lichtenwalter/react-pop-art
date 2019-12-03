@@ -12,9 +12,16 @@
 }
 
 .test-button {
-  color: green;
+  color: #F2B56B;
+  font-family: 'Bangers', cursive;
   font-size: 1.1rem;
   background-color: transparent;
+  margin-top: 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border: none;
+  font-size: 1.4rem;
+  height: 50px;
 }
 
 .create-new-event-button:hover, .create-new-event-button:active, .delete-account-buttons:hover, .delete-account-buttons:active{
